@@ -1,8 +1,9 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <global_addons>anchor,superwarp,crystaltrader,equipviewer,multictrl,healbot,sellnpc</global_addons>
+        <global_addons>anchor,superwarp,crystaltrader,equipviewer,multictrl,healbot,sellnpc,mountroulette</global_addons>
         <player_addons>
+            <enus>treasurepool</enus>
             <aerich>craft,skillchains</aerich>
             <haleigh>healbot</haleigh>
             <skivvy>gametime,healbot</skivvy>
@@ -51,7 +52,7 @@
               <ignore></ignore>
             </rdm>
             <whm>
-              <addons>healbot,debuffed,aecho,nostrum</addons>
+              <addons>healbot,debuffed,aecho</addons>
               <plugins></plugins>
               <ignore></ignore>
             </whm>
@@ -170,12 +171,12 @@
               <plugins></plugins>
               <ignore></ignore>
             </dynad>
-            <group_svh5q>
+            <odyssey>
               <zone_names>Walk of Echoes [P1],Walk of Echoes [P2]</zone_names>
-              <addons>ispy</addons>
+              <addons>ispy,anchor,react</addons>
               <plugins></plugins>
               <ignore></ignore>
-            </group_svh5q>
+            </odyssey>
         </by_zone>
         <load_delay>5</load_delay>
     </global>
