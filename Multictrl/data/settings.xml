@@ -1,0 +1,19 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <active>false</active>
+        <assist />
+        <autows>true</autows>
+        <avatar>ramuh</avatar>
+        <buy>false</buy>
+        <dia>true</dia>
+        <indi>refresh</indi>
+        <job>RDM</job>
+        <send_all_delay>0.83</send_all_delay>
+        <skivvy>
+            <job>RDM</job>
+        </skivvy>
+        <smnhelp>false</smnhelp>
+        <smnsc>false</smnsc>
+    </global>
+</settings>

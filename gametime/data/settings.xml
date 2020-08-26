@@ -1,0 +1,55 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <alert>true</alert>
+        <days>
+            <axis>horizontal</axis>
+            <bg>
+                <alpha>110</alpha>
+                <blue>0</blue>
+                <green>0</green>
+                <red>0</red>
+            </bg>
+            <pos>
+                <x>775</x>
+                <y>0</y>
+            </pos>
+            <text>
+                <alpha>255</alpha>
+                <font>Consolas</font>
+                <size>12</size>
+            </text>
+        </days>
+        <mode>1</mode>
+        <moon>
+
+        </moon>
+        <numdays>8</numdays>
+        <saved>0</saved>
+        <time>
+            <bg>
+                <alpha>25</alpha>
+                <blue>100</blue>
+                <green>100</green>
+                <red>100</red>
+                <visible>true</visible>
+            </bg>
+ 	    <flags>
+                <bold>true</bold>
+	    </flags>
+            <pos>
+                <x>1600</x>
+                <y>855</y>
+            </pos>
+            <text>
+                <alpha>255</alpha>
+                <blue>255</blue>
+                <font>Consolas</font>
+                <green>255</green>
+                <red>255</red>
+                <size>14</size>
+            </text>
+        </time>
+        <zero>false</zero>
+    </global>
+</settings>

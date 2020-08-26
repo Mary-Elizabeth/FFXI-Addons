@@ -1,0 +1,137 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <autoupdate>false</autoupdate>
+        <blinking>
+            <all>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </all>
+            <follow>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </follow>
+            <others>
+                <always>true</always>
+                <combat>false</combat>
+                <target>false</target>
+            </others>
+            <party>
+                <always>false</always>
+                <combat>false</combat>
+                <target>false</target>
+            </party>
+            <self>
+                <always>false</always>
+                <combat>true</combat>
+                <target>true</target>
+            </self>
+        </blinking>
+        <carleigh>
+            <body>8266</body>
+            <face>2</face>
+            <feet>20554</feet>
+            <hands>12362</hands>
+            <head>4120</head>
+            <legs>16458</legs>
+            <race>7</race>
+        </carleigh>
+        <carleighm>
+            <body>8266</body>
+            <face>2</face>
+            <feet>20554</feet>
+            <hands>12362</hands>
+            <head>4120</head>
+            <legs>16458</legs>
+            <race>7</race>
+        </carleighm>
+        <haleigh>
+
+        </haleigh>
+        <kaleigh>
+            <body>8266</body>
+            <face>2</face>
+            <feet>20554</feet>
+            <hands>12362</hands>
+            <head>4120</head>
+            <legs>16458</legs>
+            <race>7</race>
+        </kaleigh>
+        <others>
+
+        </others>
+        <profiles>
+            <dnc>
+                <body>8351</body>
+                <face>2</face>
+                <feet>20640</feet>
+                <hands>12499</hands>
+                <head>4307</head>
+                <legs>16569</legs>
+                <race>7</race>
+            </dnc>
+            <drg>
+                <body>8283</body>
+                <feet>20571</feet>
+                <hands>12379</hands>
+                <head>4187</head>
+                <legs>16707</legs>
+            </drg>
+            <smn>
+                <body>8284</body>
+                <face>2</face>
+                <feet>20572</feet>
+                <hands>12380</hands>
+                <head>4188</head>
+                <legs>16476</legs>
+                <race>7</race>
+            </smn>
+            <thf>
+                <body>8266</body>
+                <face>2</face>
+                <feet>20554</feet>
+                <hands>12362</hands>
+                <head>4120</head>
+                <legs>16458</legs>
+                <race>7</race>
+            </thf>
+        </profiles>
+        <replacements>
+            <body>
+
+            </body>
+            <face>
+
+            </face>
+            <feet>
+
+            </feet>
+            <hands>
+
+            </hands>
+            <head>
+
+            </head>
+            <legs>
+
+            </legs>
+            <main>
+
+            </main>
+            <race>
+
+            </race>
+            <ranged>
+
+            </ranged>
+            <sub>
+
+            </sub>
+        </replacements>
+        <skivvy>
+
+        </skivvy>
+    </global>
+</settings>
