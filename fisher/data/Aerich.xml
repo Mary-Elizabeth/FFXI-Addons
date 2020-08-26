@@ -1,0 +1,20 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <cast_attempt_delay>3</cast_attempt_delay>
+        <cast_attempt_max>3</cast_attempt_max>
+        <catch_delay_min>3</catch_delay_min>
+        <catch_delay_override>0</catch_delay_override>
+        <catch_unknown>false</catch_unknown>
+        <debug_messages>false</debug_messages>
+        <equip_delay>2</equip_delay>
+        <fatigue_count>27</fatigue_count>
+        <fatigue_start>2020-04-16</fatigue_start>
+        <move_delay>0</move_delay>
+        <recast_delay>3</recast_delay>
+        <release_delay>3</release_delay>
+        <unknown_items>
+            <1>83,17011,17007,3432,11,15,320,80</1>
+        </unknown_items>
+    </global>
+</settings>

@@ -1,0 +1,14 @@
+<package>
+  <name>fisher</name>
+  <version>4.6.1.1</version>
+  <type>addon</type>
+  <dependencies>
+    <dependency>equipment</dependency>
+    <dependency>items</dependency>
+    <dependency>pack</dependency>
+    <dependency>packets</dependency>
+    <dependency>player</dependency>
+    <dependency>settings</dependency>
+    <dependency>world</dependency>
+  </dependencies>
+</package>

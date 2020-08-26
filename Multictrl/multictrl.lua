@@ -502,6 +502,11 @@ function buy(cmd2)
 			log('Buying SINGLE CHAR SHIELD!')
 			--coroutine.sleep(5)
 			windower.send_command('sparks buyall acheron shield')
+			if ipcflag == false then
+				ipcflag = true
+				windower.send_ipc_message('buy shield')
+			end
+			ipcflag = false
 		elseif (cmd2 == 'powder' and settings.buy == true) then
 			log('Buying powders!')
 			windower.send_command('powder buy 3315')
@@ -511,12 +516,10 @@ function buy(cmd2)
 			end
 			ipcflag = false
 		elseif (cmd2 == 'ss' and settings.buy == true) then
-			windower.send_command('sellnpc shield')
-			local targetid = windower.ffxi.get_mob_by_name('Corua')
-
+			local targetid = windower.ffxi.get_mob_by_name('Olwyn')
 			windower.send_command('settarget ' .. targetid.id)
 			coroutine.sleep(1)
-			windower.send_command('input /lockon; wait 1; setkey enter down; wait 0.5; setkey enter up;')
+			windower.send_command('input /lockon; wait 2; setkey enter down; wait 0.5; setkey enter up;')
 			if ipcflag == false then
 				ipcflag = true
 				windower.send_ipc_message('buy ss')
@@ -1717,12 +1720,13 @@ windower.register_event('job change', function(new,old)--mary
 end)
 
 windower.register_event('zone change', function(new,old)--mary
-	if iamfollowleader then
+	if iamfollowleader and new then
 		currentPC=windower.ffxi.get_player()
 		for k, v in pairs(windower.ffxi.get_party()) do --loop through all party members
 				if type(v) == 'table' then
 					if v.name ~= currentPC.name then --if party member is not current player
-						if v.zone == old then
+						local exclusions = S{288,280,289,291,279}--279 walk of echos P2
+						if v.zone == old and not exclusions:contains(v.zone) then --279 walk of echos P2
 							windower.send_command('send ' .. v.name .. ' setkey numpad8 down')
 							coroutine.sleep(1.5)
 							windower.send_command('send ' .. v.name .. ' setkey numpad8 up')

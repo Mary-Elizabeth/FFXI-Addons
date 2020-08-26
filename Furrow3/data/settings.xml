@@ -1,0 +1,26 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <drop_stone_scroll>true</drop_stone_scroll>
+        <furrows>3</furrows>
+        <npc_junk>true</npc_junk>
+        <seed_grow_times>
+            <Arborfruit_Seed>6</Arborfruit_Seed>
+            <Grain_Seed>6</Grain_Seed>
+            <Revival_Root>1</Revival_Root>
+        </seed_grow_times>
+        <seeds>
+            <1>Revival Root</1>
+            <2>Revival Root</2>
+            <3>Revival Root</3>
+        </seeds>
+        <sellnpc_profile>furrow</sellnpc_profile>
+        <use_acidic_humus>false</use_acidic_humus>
+        <use_alkaline_humus>false</use_alkaline_humus>
+        <use_crystals>true</use_crystals>
+        <use_dung>false</use_dung>
+        <use_grove_humus>false</use_grove_humus>
+        <use_miracle_mulch>false</use_miracle_mulch>
+        <use_rich_humus>false</use_rich_humus>
+    </global>
+</settings>

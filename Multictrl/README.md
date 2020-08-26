@@ -52,6 +52,13 @@ ws: Activates Autows
 
 buy {on | off | shield | powder | ss | sp | re}: uses the buy addon to purchase items automatically; On: sets buy to true; Off: sets buy to false; shield: buy must be on, and will purchase shields from npc; powder: buy must be on, and will purchase powder from npc; ss: loads sellnpc shields; sp: loads sellnpc powder; re: reloads
 
+example
+  mc buy on
+  mc buy shield
+  mc buy ss
+  mc buy off
+
+
 buff: Activates 'buffup' for WHM,RDM,GEO,BRD,SMN,BLM,SCH,RUN
 
 gettarget: Gets targetID of the current target

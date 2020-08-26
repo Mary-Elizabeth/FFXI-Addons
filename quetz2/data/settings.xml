@@ -1,0 +1,20 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <end_fight_commands>gs c set AutoBuffMode Off;gs c set AutoWSMode Off</end_fight_commands>
+        <quetz_x>608.17</quetz_x>
+        <quetz_y>-933.43</quetz_y>
+        <start_fight_commands>gs c set AutoBuffMode On;gs c set AutoWSMode On</start_fight_commands>
+        <teleport_ring>Dim. Ring (Dem)</teleport_ring>
+        <trust1>Koru-Moru</trust1>
+        <trust1_short>Koru Moru</trust1_short>
+        <trust2>Selh&apos;teus</trust2>
+        <trust2_short>Selh&apos;teus</trust2_short>
+        <trust3>Qultada</trust3>
+        <trust3_short>Qultada</trust3_short>
+        <trust4>Kupipi</trust4>
+        <trust4_short>Kupipi</trust4_short>
+        <trust5>Joachim</trust5>
+        <trust5_short>Joachim</trust5_short>
+    </global>
+</settings>

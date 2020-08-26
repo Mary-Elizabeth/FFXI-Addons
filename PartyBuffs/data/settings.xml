@@ -1,0 +1,10 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <mode>blacklist</mode>
+        <size>10</size>
+    </global>
+    <aerich>
+        <size>20</size>
+    </aerich>
+</settings>

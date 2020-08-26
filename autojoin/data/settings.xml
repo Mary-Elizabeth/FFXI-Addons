@@ -4,12 +4,13 @@
         <autodecline>false</autodecline>
         <blacklist />
         <mode>whitelist</mode>
-        <whitelist />
+        <whitelist>Zwicked,Carleigh,Mrrill,Enus,Haleigh,Skivvy,Aerich,Aericht</whitelist>
     </global>
+
+    <aericht>
+        <whitelist>Haleigh,Skivvy,Enus,Carleigh</whitelist>
+    </aericht>
     <carleigh>
-        <whitelist>Skivvy,Carleigh,Aerich,Enus</whitelist>
+        <whitelist>Zwicked,Carleigh,Mrrill,Enus,Haleigh,Skivvy,Aerich,Aericht</whitelist>
     </carleigh>
-    <skivvy>
-        <whitelist>Carleigh,Aerich,Enus</whitelist>
-    </skivvy>
 </settings>

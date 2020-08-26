@@ -1,0 +1,27 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <blacklist />
+        <clear>true</clear>
+        <clearall>false</clearall>
+        <clearprogress>false</clearprogress>
+        <profiles>
+            <amb>3760,3759,3995,3758</amb>
+            <crystal>71,73,75,77,72,74,76,78</crystal>
+            <fire>71,</fire>
+            <ice>72,</ice>
+            <wind>73,</wind>
+            <earth>74,</earth>
+            <lightning>75,</lightning>
+            <water>76,</water>
+            <light>77,</light>
+            <dark>78,</dark>
+            <day>3040,3774,3782,3775,3021,3776,1038,3027,3785,3778,3036,3777,3058,3045,3788,4082</day>
+            <default />
+            <res>950,946,948,951</res>
+            <test>15,16,3774,3776,3778,946,74,948,117,951,3058,3060,3777,907,12,73,3785,3056,950,3760,3788</test>
+            <unity>3020,3022,3057,3019,3023,3018,3021</unity>
+            <venemy>12</venemy>
+        </profiles>
+    </global>
+</settings>

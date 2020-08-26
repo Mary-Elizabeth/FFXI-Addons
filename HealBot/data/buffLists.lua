@@ -4,7 +4,7 @@ return {
             'Haste II',
             'Protect V',
             'Shell V',
-            'Phalanx II'
+            'Phalanx II',
         },
         ['abyself'] = {
             'Haste II',
@@ -12,45 +12,78 @@ return {
             'Protect V',
             'Shell V',
             'Phalanx',
-            'Composure'
+            'Composure',
         },
         ['mage'] = {
             'Haste II',
             'Refresh III',
-          --  'Protect V',
-          --  'Shell V',
-            'Phalanx II'
+            'Protect V',
+            'Shell V',
+            'Phalanx II',
         },
         ['mage2'] = {
             'Haste II',
             'Refresh III',
-            'Phalanx II'
+            'Phalanx II',
+        },
+        ['tank'] = {
+            'Haste II',
+            'Refresh III',
+            'Phalanx II',
+            'Protect V',
+            'Shell V',
         },
         ['melee'] = {
             'Haste II',
             'Phalanx II',
-          --  'Protect V',
-        --    'Shell V'
         },
         ['self'] = {
             'Haste II',
             'Refresh III',
             'Aquaveil',
-          --  'Protect V',
-          --  'Shell V',
-            'Stoneskin',
             'Phalanx',
             'Reraise',
-            'Composure'
-        }
+            'Composure',
+        },
     },
-    ['self'] = {
-        'Haste II',
-        'Refresh III'
-    },
-    ['whm'] = {
+    ['rdm/sch'] = {
+        ['mage'] = {
+            'Haste II',
+            'Refresh III',
+            'Protect V',
+            'Shell V',
+            'Phalanx II',
+        },
+        ['tank'] = {
+            'Haste II',
+            'Refresh III',
+            'Phalanx II',
+            'Protect V',
+            'Shell V',
+        },
         ['melee'] = {
-            'Haste'
+            'Haste II',
+            'Phalanx II',
+        },
+        ['self'] = {
+            'Haste II',
+            'Refresh III',
+            'Aquaveil',
+            'Phalanx',
+            'Reraise',
+            'Aurorastorm',
+            'Composure',
+        },
+    },
+        -----------------WHM----------------------------
+    ['whm'] = {
+        ['mage'] = {
+            'Haste',
+            'Aquaveil',
+            'Protectra V',
+            'Shellra V',
+            'Reraise IV',
+            'Afflatus Solace',
         },
         ['self'] = {
             'Haste',
@@ -58,12 +91,12 @@ return {
             'Protectra V',
             'Shellra V',
             'Reraise IV',
-            'Afflatus Solace'
-        }
+            'Afflatus Solace',
+        },
     },
     ['whm/rdm'] = {
         ['melee'] = {
-            'Haste'
+            'Haste',
         },
         ['self'] = {
             'Haste',
@@ -73,32 +106,172 @@ return {
             'Shellra V',
             'Phalanx',
             'Reraise IV',
-            'Afflatus Solace'
-        }
+            'Afflatus Solace',
+        },
     },
     ['whm/sch'] = {
         ['melee'] = {
-            'Haste'
+            'Haste',
         },
         ['self'] = {
             'Haste',
             'Light Arts',
+            'Aurorastorm',
             'Aquaveil',
             'Protectra V',
             'Shellra V',
             'Reraise IV',
-            'Afflatus Solace'
-        }
+            'Afflatus Solace',
+        },
     },
-    ['cor/whm'] = {
+    -----------------SCH----------------------------
+    ['sch/whm'] = {
         ['melee'] = {
-            'Haste'
+            'Haste',
+            'Protect V',
+            'Shell V',
+        },
+        ['mage'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+        },
+        ['self'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+            'Reraise',
+            'Aurorastorm II',
+        },
+    },
+    ['sch/rdm'] = {
+        ['melee'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+        },
+        ['mage'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+        },
+        ['self'] = {
+            'Haste',
+            'Phalanx',
+            'Protect V',
+            'Shell V',
+            'Reraise',
+        },
+    },
+        -----------------GEO----------------------------
+    ['geo/whm'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['tank'] = {
+            'Haste',
         },
         ['self'] = {
             'Haste',
             'Protectra III',
             'Shellra II',
             'Reraise',
-        }
+        },
     },
+    ['geo/sch'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['tank'] = {
+            'Haste',
+        },
+        ['self'] = {
+            'Reraise',
+        },
+    },
+    ['tank'] = {
+        'Haste',
+    },
+    ['geo/rdm'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['self'] = {
+            'Haste',
+            'Refresh',
+        },
+    },
+        -----------------BRD---------------------------
+    ['brd/whm'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['tank'] = {
+            'Haste',
+        },
+        ['self'] = {
+            'Haste',
+            'Protectra III',
+            'Shellra II',
+            'Reraise',
+        },
+    },
+    ['brd/sch'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['tank'] = {
+            'Haste',
+        },
+        ['self'] = {
+            'Reraise',
+        },
+    },
+    ['brd/rdm'] = {
+        ['melee'] = {
+            'Haste',
+        },
+        ['tank'] = {
+            'Haste',
+        },
+        ['self'] = {
+            'Haste',
+            'Refresh',
+        },
+    },
+    -----------------COR---------------------------
+['cor/whm'] = {
+    ['melee'] = {
+        'Haste',
+    },
+    ['tank'] = {
+        'Haste',
+    },
+    ['self'] = {
+        'Haste',
+        'Protectra III',
+        'Shellra II',
+        'Reraise',
+    },
+},
+['cor/sch'] = {
+    ['melee'] = {
+        'Haste',
+    },
+    ['tank'] = {
+        'Haste',
+    },
+    ['self'] = {
+        'Reraise',
+    },
+},
+['cor/rdm'] = {
+    ['melee'] = {
+        'Haste',
+    },
+    ['self'] = {
+        'Haste',
+        'Refresh',
+    },
+},
 }
