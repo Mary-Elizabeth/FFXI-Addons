@@ -66,6 +66,17 @@
             <y>630</y>
         </pos>
     </carleigh>
+    <enus>
+        <pos>
+            <x>1328</x>
+            <y>157</y>
+        </pos>
+        <text>
+            <fonts>
+
+            </fonts>
+        </text>
+    </enus>
     <haleigh>
         <pos>
             <x>2192</x>

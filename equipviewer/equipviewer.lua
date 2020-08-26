@@ -6,6 +6,9 @@ _addon.commands = { 'equipviewer', 'ev' };
 require('core');
 local bit = require('bit')
 local http = require("socket.http");
+config = require('config')
+
+
 
 local default_config =
 {
@@ -16,7 +19,7 @@ local default_config =
 };
 
 local equipViewerConfig = default_config;
-
+--local equipViewerConfig = defaults;
 local equipViewer;
 
 ---------------------------------------------------------------------------------------------------
@@ -43,6 +46,7 @@ windower.register_event('load', function()
 
 	-- create onscreen objects
 	equipViewer:Create(equipViewerConfig['position'][1], equipViewerConfig['position'][2], equipViewerConfig['color'], equipViewerConfig['background_color']);
+
 
 	-- update equipment for initial load
 	equipViewer:Update();

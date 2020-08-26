@@ -9,4 +9,7 @@
         <Pass />
         <Verbose>false</Verbose>
     </global>
+    <carleigh>
+        <Drop>Voidsnapper,Light Crystal,Wind Crystal</Drop>
+    </carleigh>
 </settings>

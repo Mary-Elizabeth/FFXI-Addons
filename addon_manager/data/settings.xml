@@ -1,10 +1,10 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <global_addons>anchor,superwarp,crystaltrader,equipviewer,multictrl,healbot,sellnpc,mountroulette</global_addons>
+        <global_addons>superwarp,crystaltrader,equipviewer,multictrl,healbot,sellnpc,mountroulette,quicktrade</global_addons>
         <player_addons>
             <enus>treasurepool</enus>
-            <aerich>craft,skillchains</aerich>
+            <aerich>craft,skillchains,partybuffs</aerich>
             <haleigh>healbot</haleigh>
             <skivvy>gametime,healbot</skivvy>
             <carleigh>infobar,skillchains,dressup</carleigh>
