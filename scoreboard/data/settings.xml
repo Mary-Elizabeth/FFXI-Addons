@@ -64,6 +64,15 @@
         <showfellow>true</showfellow>
         <visible>false</visible>
     </global>
+    <aerich>
+        <display>
+            <pos>
+                <x>1202</x>
+                <y>125</y>
+            </pos>
+        </display>
+        <visible>true</visible>
+    </aerich>
     <carleigh>
         <display>
             <pos>
