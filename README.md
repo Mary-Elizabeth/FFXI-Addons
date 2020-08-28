@@ -49,6 +49,8 @@ _List of custom addons. Some have been modified by me to suit my own needs, full
 
 **unm** - Updated to Darkdoom's v2, further modified the script to include the force option; which allows the player to continue to pop the unm even if sparks are capped.
 
-If you need further information be sure to check out the addons readme file, otherwise you can skim the addons .lua to get an idea of how it works.
-
 **XIVPetBars** by [Icydeath](https://github.com/Icydeath/ffxi-xivpetbar-addon) - Addon to display your pets hp/mp/tp
+
+
+
+If you need further information be sure to check out the addons readme file, otherwise you can skim the addons .lua to get an idea of how it works.
