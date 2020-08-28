@@ -33,7 +33,7 @@ _List of custom addons. Some have been modified by me to suit my own needs, full
 
 **multictrl** - Use this to initialze your addons for alts or main and just execute with 1 command.
 
-**PartyBars** [Icydeath](https://github.com/Icydeath/ffxi-partybars-addon) - Recreation of the party list so you can place it anywhere on the screen.
+**PartyBars** by [Icydeath](https://github.com/Icydeath/ffxi-partybars-addon) - Recreation of the party list so you can place it anywhere on the screen.
 
 **Quetz2** - A reworked quetz script - less buggy, more consistant version. See the readme
 
@@ -45,10 +45,10 @@ _List of custom addons. Some have been modified by me to suit my own needs, full
 
 **Singer** by [Ivaar](https://github.com/Ivaar/Windower-addons) - Automates casting bard songs.
 
-**StoreMats**[Icydeath](https://github.com/Icydeath/ffxi-addon-storemats) - Item consolidator/organizer with config settings.
+**StoreMats** by [Icydeath](https://github.com/Icydeath/ffxi-addon-storemats) - Item consolidator/organizer with config settings.
 
 **unm** - Updated to Darkdoom's v2, further modified the script to include the force option; which allows the player to continue to pop the unm even if sparks are capped.
 
 If you need further information be sure to check out the addons readme file, otherwise you can skim the addons .lua to get an idea of how it works.
 
-**XIVPetBars**[Icydeath](https://github.com/Icydeath/ffxi-xivpetbar-addon) - Addon to display your pets hp/mp/tp
+**XIVPetBars** by [Icydeath](https://github.com/Icydeath/ffxi-xivpetbar-addon) - Addon to display your pets hp/mp/tp
