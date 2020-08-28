@@ -1,5 +1,7 @@
 # FFXI Windower Addons
 _List of custom addons. Some have been modified by me to suit my own needs, full credit goes to the original creators._
+
+
 **Addon_Manager** by [Icydeath](https://github.com/Icydeath/ffxi-addon-manager) - FFXI Windower4 addon to manage all of your addons. Includes a configuration program.
 ![AddonManagerConfig](/addon_manager/AppOverview.png)
 
