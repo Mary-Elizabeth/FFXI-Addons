@@ -9,7 +9,7 @@ bit = require('bit')
 config = require('config')
 
 default = {}
-default.buy_list = {20,} -- key items will be purchased in this order until you are unable to buy more
+default.buy_list = {20, 23} -- key items will be purchased in this order until you are unable to buy more
 settings = config.load(default)
 
 htmb_map = {

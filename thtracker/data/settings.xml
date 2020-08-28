@@ -48,8 +48,13 @@
     <carleigh>
         <pos>
             <x>14</x>
-            <y>122</y>
+            <y>139</y>
         </pos>
+        <text>
+            <fonts>
+
+            </fonts>
+        </text>
     </carleigh>
     <haleigh>
         <pos>
