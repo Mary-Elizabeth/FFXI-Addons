@@ -1,0 +1,47 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <Bars>
+            <OffsetX>300</OffsetX>
+            <OffsetY>-200</OffsetY>
+        </Bars>
+        <Texts>
+            <Color>
+                <Alpha>255</Alpha>
+                <Blue>255</Blue>
+                <Green>255</Green>
+                <Red>255</Red>
+            </Color>
+            <Font>sans-serif</Font>
+            <FullTpColor>
+                <Blue>250</Blue>
+                <Green>180</Green>
+                <Red>80</Red>
+            </FullTpColor>
+            <Offset>0</Offset>
+            <Size>10</Size>
+            <Stroke>
+                <Alpha>255</Alpha>
+                <Blue>0</Blue>
+                <Green>0</Green>
+                <Red>0</Red>
+                <Width>2</Width>
+            </Stroke>
+        </Texts>
+        <Theme>
+            <Compact>false</Compact>
+            <DimTpBar>true</DimTpBar>
+            <HPBar>
+                <Offset>0</Offset>
+                <Spacing>24</Spacing>
+                <Width>117</Width>
+            </HPBar>
+            <MPBar>
+                <Offset>0</Offset>
+                <Spacing>24</Spacing>
+                <Width>73</Width>
+            </MPBar>
+            <Name>ffxiv</Name>
+        </Theme>
+    </global>
+</settings>
