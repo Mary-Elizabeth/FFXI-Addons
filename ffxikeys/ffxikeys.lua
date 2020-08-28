@@ -1,11 +1,11 @@
 _addon.name = 'FFXIKeys'
 _addon.author = 'Areint/Alzade'
-_addon.version = '2.3.2'
+_addon.version = '2.3.6'
 _addon.commands = {'keys'}
 
 --------------------------------------------------------------------------------
 require('logger')
-packets = require('packets')
+packets = require('util/packets')
 settings = require('util/settings')
 
 local CommandFactory = require('command/factory')
@@ -16,6 +16,11 @@ local NilCommand = require('command/nil')
 --------------------------------------------------------------------------------
 local state = {}
 state.command = NilCommand:NilCommand()
+
+--------------------------------------------------------------------------------
+local function Restart()
+    state.command(state)
+end
 
 --------------------------------------------------------------------------------
 local function OnReward(reward)
@@ -36,9 +41,10 @@ end
 
 --------------------------------------------------------------------------------
 local function OnCommandSuccess(reward)
-    if OnReward(reward) and settings.config.loop and state.command:IsRepeatable() then
+    if OnReward(reward) and settings.config.loop
+            and state.command:IsRepeatable() then
         state.command:Reset()
-        state.command(state)
+        coroutine.schedule(Restart, settings.config.delay)
     else
         state.command = NilCommand:NilCommand()
         FileLogger.Flush()
@@ -61,7 +67,11 @@ end
 
 --------------------------------------------------------------------------------
 local function OnIncomingData(id, _, pkt, b, i)
-    return state.command:OnIncomingData(id, pkt)
+    if not packets.is_duplicate(id, pkt) then
+        return state.command:OnIncomingData(id, pkt)
+    else
+        return false
+    end
 end
 
 --------------------------------------------------------------------------------
@@ -85,6 +95,7 @@ local function OnCommand(cmd, name)
 end
 
 --------------------------------------------------------------------------------
+windower.register_event('login', OnLoad)
 windower.register_event('load', OnLoad)
 windower.register_event('zone change', OnLoad)
 windower.register_event('addon command', OnCommand)

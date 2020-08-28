@@ -15,6 +15,7 @@ local function defaults()
     defaults.logitems = false
     defaults.loop = true
     defaults.maxdistance = 25.0
+    defaults.delay = 0
 
     return defaults
 end

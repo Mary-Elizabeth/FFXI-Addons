@@ -21,4 +21,6 @@ Use SP Gobbie Key     | //usekeys
 \<key\> should be replaced with values from [data/keys.lua](https://github.com/Tny5989/FFXIKeys/blob/master/data/keys.lua).  
 \<count\> should be replaced with a number.
 
-This addon does not check your accolades.  It is up to you to verify your accolades amount before buying keys.
+This addon does not check your accolades.  It is up to you to verify your accolades amount before buying keys.  
+
+As with all my addons, this is still a work in progress and should be used at your own risk.

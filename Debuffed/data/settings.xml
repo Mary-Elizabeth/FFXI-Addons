@@ -84,7 +84,12 @@
     <skivvy>
         <pos>
             <x>1613</x>
-            <y>438</y>
+            <y>437</y>
         </pos>
+        <text>
+            <fonts>
+
+            </fonts>
+        </text>
     </skivvy>
 </settings>
