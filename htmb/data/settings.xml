@@ -2,16 +2,21 @@
 <settings>
     <global>
         <buy_list>
-            <1>23</1>
         </buy_list>
     </global>
-    <carleigh>
-
-    </carleigh>
-    <skivvy>
+    <aerich>
         <buy_list>
             <1>23</1>
             <2>20</2>
         </buy_list>
+    </aerich>
+    <carleigh>
+
+    </carleigh>
+    <enus>
+
+    </enus>
+    <skivvy>
+
     </skivvy>
 </settings>

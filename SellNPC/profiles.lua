@@ -97,7 +97,30 @@ profiles['void'] = S{
 	'Rock Salt',
 	'Crab Shell',
 	'Amethyst',
-	
+	'Sunstone',
+	'Persikos',
+	'Beech Log',
+	'Gold Ingot',
+	'Gold Thread',
+	'Icarus Wing',
+	'Light Crystal',
+	'Flocon-de-mer',
+	'Jacaranda log',
+	'Translucent Rock',
+	'Emperor Fish',
+	'Fiendish skin',
+	'Wyvern Skin',
+	'Int. Potion',
+	'Elixir',
+	'Hi-Potion +2',
+	'Teak Log',
+	'Light Cluster',
+	'Breeze Geode',
+	'Magic Pot Shard',
+	'Yellow Rock',
+	'Hi-potion +3',
+
+
 
 
 }

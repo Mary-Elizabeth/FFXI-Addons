@@ -73,6 +73,14 @@
             </pos>
         </text_box_settings>
     </carleigh>
+    <enus>
+        <text_box_settings>
+            <pos>
+                <x>573</x>
+                <y>860</y>
+            </pos>
+        </text_box_settings>
+    </enus>
     <haleigh>
         <text_box_settings>
             <pos>
