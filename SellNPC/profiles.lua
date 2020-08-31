@@ -119,8 +119,12 @@ profiles['void'] = S{
 	'Magic Pot Shard',
 	'Yellow Rock',
 	'Hi-potion +3',
-
-
+	'Khimaira Mane',
+	'Kejusu Satin',
+	'W. Spiders Web',
+	'Wyvern Tailskin',
+	'Agility Potion',
+	'Mind Potion',
 
 
 }

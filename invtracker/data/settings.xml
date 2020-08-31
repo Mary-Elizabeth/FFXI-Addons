@@ -41,8 +41,8 @@
                 <visible>false</visible>
             </mogWardrobe>
             <pos>
-                <x>-365</x>
-                <y>-50</y>
+                <x>-605</x>
+                <y>-200</y>
             </pos>
             <sort>true</sort>
             <spacing>4</spacing>

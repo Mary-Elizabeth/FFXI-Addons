@@ -29,7 +29,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ]]
 
 --[[
-	Special thanks to those that have helped with specific areas of Superwarp: 
+	Special thanks to those that have helped with specific areas of Superwarp:
 		Waypoint currency calculations: Ivaar, Thorny
 		Same-Zone warp data collection: Kenshi
 		Escha domain elvorseal packets: Ivaar
@@ -72,7 +72,7 @@ sub_zone_aliases = {
 
 local defaults = {
     debug = false,
-    send_all_delay = 0.4,                   -- delay (seconds) between each character
+    send_all_delay = 0.8,                   -- delay (seconds) between each character
     max_retries = 6,                        -- max retries for loading NPCs.
     retry_delay = 2,                        -- delay (seconds) between retries
     simulated_response_time = 0,            -- response time (seconds) for selecting a single menu item. Note this can happen multiple times per warp.
@@ -81,7 +81,7 @@ local defaults = {
     enable_same_zone_teleport = true,       -- enable teleporting between points in the same zone. This is the default behavior in-game. Turning it off will look different than teleporting manually.
     enable_fast_retry_on_interrupt = false, -- after an event skip event, attempt a fast-retry that doesn't wait for packets or delay.
     use_tabs_at_survival_guides = false,    -- use tabs instead of gil at survival guides.
-    enable_locked_warps = true,             -- enables warp destinations not unlocked yet. 
+    enable_locked_warps = true,             -- enables warp destinations not unlocked yet.
 }
 
 local settings = config.load(defaults)
@@ -280,13 +280,13 @@ local function resolve_warp(map_name, zone, sub_zone)
             end
         else
             debug("Found zone settings. No sub-zones defined.")
-            return zone_map, closest_zone_name    
+            return zone_map, closest_zone_name
         end
     else
         log('Could not find zone: '..zone)
         return nil
     end
-end 
+end
 
 function poke_npc(id, index)
 	local first_poke = true
@@ -295,7 +295,7 @@ function poke_npc(id, index)
 			if state.loop_count > 0 then
 				state.loop_count = state.loop_count - 1
             	log("Timed out waiting for response from the poke. Retrying...")
-            else 
+            else
                 log("Timed out waiting for response from the poke.")
                 current_activity = nil
             	return
@@ -444,12 +444,12 @@ local function handle_warp(warp, args, fast_retry, retries_remaining)
     end
     state.fast_retry = fast_retry
 
-    -- because I can't stop typing "hp warp X" because I've been trained. 
+    -- because I can't stop typing "hp warp X" because I've been trained.
     if args[1]:lower() == 'warp' or args[1]:lower() == 'w' then args:remove(1) end
 
     local all = args[1]:lower() == 'all' or args[1]:lower() == 'a' or args[1]:lower() == '@all'
-    if all then 
-        args:remove(1) 
+    if all then
+        args:remove(1)
 
         debug('sending warp to all.')
         windower.send_ipc_message(warp..' '..args:concat(' '))
@@ -528,7 +528,7 @@ windower.register_event('addon command', function(...)
         end
 
     elseif cmd == 'reset' then
-        reset()    
+        reset()
         if args[1] and args[1]:lower() == 'all' then
             windower.send_ipc_message('reset')
         end
@@ -537,7 +537,7 @@ windower.register_event('addon command', function(...)
         settings.debug = not settings.debug
         log('Debug is now '..tostring(settings.debug))
         settings:save()
-        if settings.debug then 
+        if settings.debug then
         	for _, m in ipairs(state.debug_stack) do
         		log(m)
         	end
@@ -559,7 +559,7 @@ windower.register_event('unhandled command', function(cmd, ...)
 end)
 
 -- handle ipc message
-windower.register_event('ipc message', function(msg) 
+windower.register_event('ipc message', function(msg)
     local args = msg:split(' ')
     local cmd = args[1]
     args:remove(1)
@@ -583,7 +583,7 @@ local function perform_next_action()
         elseif not state.fast_retry and current_action.wait_packet then
             debug("waiting for packet 0x"..current_action.wait_packet:hex().." for action "..tostring(current_activity.action_index)..' '..(current_action.description or ''))
             current_action.wait_start = os.time()
-            if not current_action.timeout then 
+            if not current_action.timeout then
                 current_action.timeout = settings.default_packet_wait_timeout
             end
             local fn = function(s, ca, i, p, d)
@@ -637,7 +637,7 @@ local function perform_next_action()
     end
 end
 
--- Handle menu interraction. 
+-- Handle menu interraction.
 windower.register_event('incoming chunk',function(id,data,modified,injected,blocked)
     if current_activity and current_activity.action_queue and current_activity.running then
         local current_action = current_activity.action_queue[current_activity.action_index]
@@ -666,7 +666,7 @@ windower.register_event('incoming chunk',function(id,data,modified,injected,bloc
 
     if id == 0x034 or id == 0x032 then
         local p = packets.parse('incoming', data)
-        
+
         if current_activity and not current_activity.running then
         	current_activity.caught_poke = true
             local zone = windower.ffxi.get_info()['zone']

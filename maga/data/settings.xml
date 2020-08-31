@@ -43,13 +43,13 @@
             </text>
         </display>
         <fern>true</fern>
-        <pellucid>true</pellucid>
+        <pellucid>false</pellucid>
         <profiles>
             <default>
 
             </default>
         </profiles>
         <style>melee</style>
-        <taupe>true</taupe>
+        <taupe>false</taupe>
     </global>
 </settings>

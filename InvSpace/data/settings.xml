@@ -67,4 +67,17 @@
             </pos>
         </display>
     </aericht>
+    <skivvy>
+        <display>
+            <pos>
+                <x>1124</x>
+                <y>721</y>
+            </pos>
+            <text>
+                <fonts>
+
+                </fonts>
+            </text>
+        </display>
+    </skivvy>
 </settings>

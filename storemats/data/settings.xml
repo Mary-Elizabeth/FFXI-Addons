@@ -1,0 +1,14 @@
+<?xml version="1.1" ?>
+<settings>
+    <global>
+        <always_bring_to_inventory>Echo Drops,Sole Sushi</always_bring_to_inventory>
+        <keep_in_inventory>Silver Voucher,Copper Voucher</keep_in_inventory>
+        <keep_single_stack_only>Remedy,Silent Oil,Prism Powder</keep_single_stack_only>
+        <small_footprint>true</small_footprint>
+        <storable_bags>satchel,sack,case</storable_bags>
+        <store_usable_items>true</store_usable_items>
+    </global>
+    <enus>
+        <storable_bags>satchel,safe2,safe,storage,sack,case</storable_bags>
+    </enus>
+</settings>

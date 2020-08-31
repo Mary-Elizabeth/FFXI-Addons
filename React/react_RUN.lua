@@ -124,7 +124,7 @@ return {
 
     ["Kin"]={
         ["Stygian Sphere"]={
-            ["complete_reaction"]="exec other/facemobp",
+            ["complete_reaction"]="facemobp",
             ["ready_reaction"]="turnaround"
         },
         ["Malign Invocation"]={
@@ -151,34 +151,34 @@ return {
             ["complete_reaction"]="facemobp",
             ["ready_reaction"]="turnaround"
         },
-        ["Comet"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Drain"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Drain III"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Aspir"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Aspir III"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Meteor"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        },
-        ["Holy"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        }
+        -- ["Comet"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Drain"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Drain III"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Aspir"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Aspir III"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Meteor"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- },
+        -- ["Holy"]={
+        --     ["complete_reaction"]="",
+        --     ["ready_reaction"]="input /ws Dimidiation <t>"
+        -- }
     },
     ["Bozzetto Retributionist"]={
             ["Boiling Over"]={

@@ -75,6 +75,15 @@
         <timers>false</timers>
         <use_ws>false</use_ws>
     </global>
+    <enus>
+        <actions>true</actions>
+        <box>
+            <pos>
+                <x>1248</x>
+                <y>410</y>
+            </pos>
+        </box>
+    </enus>
     <rythor>
         <box>
             <pos>
@@ -82,5 +91,12 @@
                 <y>818</y>
             </pos>
         </box>
+        <recast>
+            <song>
+                <max>15</max>
+                <min>10</min>
+            </song>
+        </recast>
+        <timers>true</timers>
     </rythor>
 </settings>

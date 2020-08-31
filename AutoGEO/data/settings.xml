@@ -13,11 +13,11 @@
         </buffs>
         <delay>4.2</delay>
         <entrust>
-            <ma>Indi-Precision</ma>
-            <target>icydeath</target>
+            <ma>Indi-Frailty</ma>
+            <target>Aerich</target>
         </entrust>
-        <geo>Geo-Frailty</geo>
-        <indi>Indi-Precision</indi>
+        <geo>Geo-Haste</geo>
+        <indi>Indi-Haste</indi>
         <max_ws_hp>0</max_ws_hp>
         <min_ws_hp>0</min_ws_hp>
         <recast>
@@ -70,6 +70,14 @@
             </text>
         </text>
     </global>
+    <enus>
+        <text>
+            <pos>
+                <x>438</x>
+                <y>203</y>
+            </pos>
+        </text>
+    </enus>
     <rythor>
         <aug>
             <lifestream>13</lifestream>
@@ -80,7 +88,9 @@
             <target>gorby</target>
         </entrust>
         <geo>Geo-Fend</geo>
-        <indi>Indi-Haste</indi>
+        <indi>Indi-Precision</indi>
+        <max_ws_hp>99</max_ws_hp>
+        <min_ws_hp>20</min_ws_hp>
         <text>
             <pos>
                 <x>1487</x>
