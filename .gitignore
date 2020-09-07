@@ -12,7 +12,7 @@ findAll/data/Kaleigh.lua
 findAll/data/Enus.lua
 findAll/data/Skivvy.lua
 DressUp/data/
-pointwatch/data/
+pointwatch/data/settings.xml
 Trusts/data/
 Skillchains/data/
 targetinfo/data/
@@ -23,3 +23,12 @@ scoreboard/data/
 RandomMount/data/
 superwarp/data/
 xipivot/
+equipviewer/data
+equipviewer/equipviewer.lua
+position_manager/data/settings.xml
+MobCompass/data/settings.xml
+maga/data/settings.xml
+FastCS/data/settings.xml
+ConsoleBG/Data/settings.xml
+XIPivot/data/settings.xml
+position_manager/data/settings.xml
