@@ -527,7 +527,7 @@ function facemobp(actor)
 	local self_vector = windower.ffxi.get_mob_by_index(windower.ffxi.get_player().index or 0)
 	if target then  -- Please note if you target yourself you will face Due East
 		local angle = (math.atan2((target.y - self_vector.y), (target.x - self_vector.x))*180/math.pi)*-1
-    coroutine.sleep(5)
+    coroutine.sleep(6.5)
 		windower.ffxi.turn((angle):radian())
 	else
 		windower.add_to_chat(10,"React: You're not targeting anything to face")
