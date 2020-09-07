@@ -125,6 +125,32 @@ return {
         },
     },
     -----------------SCH----------------------------
+    ['sch'] = {
+        ['melee'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+            'Regen V',
+        },
+        ['mage'] = {
+            'Haste',
+            'Protect V',
+            'Shell V',
+        },
+        ['tank'] = {
+            'Haste',
+            'Animus Augeo',
+            'Protect V',
+            'Shell V',
+            'Regen V',
+        },
+        ['self'] = {
+            'Protect V',
+            'Shell V',
+            'Aurorastorm II',
+        },
+    },
+
     ['sch/whm'] = {
         ['melee'] = {
             'Haste',
@@ -149,18 +175,26 @@ return {
             'Haste',
             'Protect V',
             'Shell V',
+            'Regen V',
         },
         ['mage'] = {
             'Haste',
             'Protect V',
             'Shell V',
         },
-        ['self'] = {
+        ['tank'] = {
             'Haste',
+            'Animus Augeo',
+            'Refresh',
+            'Protect V',
+            'Shell V',
+            'Regen V',
+        },
+        ['self'] = {
             'Phalanx',
             'Protect V',
             'Shell V',
-            'Reraise',
+            'Aurorastorm II',
         },
     },
         -----------------GEO----------------------------
