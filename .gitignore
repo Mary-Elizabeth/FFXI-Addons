@@ -12,7 +12,7 @@ findAll/data/Kaleigh.lua
 findAll/data/Enus.lua
 findAll/data/Skivvy.lua
 DressUp/data/
-pointwatch/data/settings.xml
+pointwatch/data/
 Trusts/data/
 Skillchains/data/
 targetinfo/data/
@@ -22,11 +22,6 @@ InfoBar/data/
 scoreboard/data/
 RandomMount/data/
 superwarp/data/
-xipivot/
-equipviewer/data
-equipviewer/equipviewer.lua
-position_manager/data/settings.xml
-MobCompass/data/settings.xml
 maga/data/settings.xml
 FastCS/data/settings.xml
 ConsoleBG/Data/settings.xml
@@ -34,3 +29,7 @@ XIPivot/data/settings.xml
 position_manager/data/settings.xml
 DistancePlus/data/settings.xml
 scoreboard/data/settings.xml
+xipivot/
+equipviewer/data
+equipviewer/equipviewer.lua
+MobCompass/data
