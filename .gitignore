@@ -35,3 +35,6 @@ equipviewer/equipviewer.lua
 MobCompass/data
 position_manager/data/settings.xml
 XivParty/data/settings.xml
+HealBot/data/mob_immunities.lua
+EmpyPopTracker/data/settings.xml
+battlemod/data/colors.xml
