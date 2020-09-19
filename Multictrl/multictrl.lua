@@ -606,7 +606,7 @@ function fight()
 
 ---------------------------------------------------------MARY'S CHANGES, YO!---------------------------------
 	if MeleeJobs:contains(player_job.main_job) then --erik
-		windower.send_command('hb f dist 7')--erik
+		windower.send_command('hb f dist 8')--erik
 		--for SupportJobs
 		if has_value(playerJobs, 'RDM') then
 			windower.send_command('send @RDM hb bufflist melee ' .. currentPC.name) --mary
@@ -1725,7 +1725,7 @@ windower.register_event('zone change', function(new,old)--mary
 		for k, v in pairs(windower.ffxi.get_party()) do --loop through all party members
 				if type(v) == 'table' then
 					if v.name ~= currentPC.name then --if party member is not current player
-						local exclusions = S{288,280,289,291,279}--279 walk of echos P2
+						local exclusions = S{288,280,289,291,279,259}--279 walk of echos P2
 						if v.zone == old and not exclusions:contains(v.zone) then --279 walk of echos P2
 							windower.send_command('send ' .. v.name .. ' setkey numpad8 down')
 							coroutine.sleep(1.5)

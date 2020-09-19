@@ -33,3 +33,5 @@ xipivot/
 equipviewer/data
 equipviewer/equipviewer.lua
 MobCompass/data
+position_manager/data/settings.xml
+XivParty/data/settings.xml

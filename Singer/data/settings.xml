@@ -76,15 +76,15 @@
         <use_ws>false</use_ws>
     </global>
     <enus>
-        <actions>true</actions>
         <box>
             <pos>
-                <x>1248</x>
-                <y>410</y>
+                <x>1523</x>
+                <y>175</y>
             </pos>
         </box>
     </enus>
     <rythor>
+        <actions>true</actions>
         <box>
             <pos>
                 <x>1426</x>

@@ -18,8 +18,8 @@ return {
     ['textBoxes'] = {
         ['actionInfo'] = {
             ['visible'] = true,
-            ['x'] = -125,
-            ['y'] = 100
+            ['x'] = -130,
+            ['y'] = 48
         },
         ['actionQueue'] = {
             ['font'] = 'Arial',
@@ -32,12 +32,12 @@ return {
             ['font'] = 'Arial',
             ['size'] = 10,
             ['visible'] = true,
-            ['x'] = -125,
-            ['y'] = 340
+            ['x'] = -130,
+            ['y'] = 70
         },
         ['moveInfo'] = {
             ['visible'] = false,
-            ['x'] = -125,
+            ['x'] = -130,
             ['y'] = 100
         }
     },

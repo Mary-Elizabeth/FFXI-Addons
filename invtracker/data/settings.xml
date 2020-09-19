@@ -6,7 +6,7 @@
             <blockSpacing>4</blockSpacing>
             <equipment>
                 <maxColumns>4</maxColumns>
-                <visible>true</visible>
+                <visible>false</visible>
             </equipment>
             <inventory>
                 <maxColumns>5</maxColumns>
@@ -14,7 +14,7 @@
             </inventory>
             <mogCase>
                 <maxColumns>5</maxColumns>
-                <visible>true</visible>
+                <visible>false</visible>
             </mogCase>
             <mogLocker>
                 <maxColumns>5</maxColumns>
@@ -22,7 +22,7 @@
             </mogLocker>
             <mogSack>
                 <maxColumns>5</maxColumns>
-                <visible>true</visible>
+                <visible>false</visible>
             </mogSack>
             <mogSafe>
                 <maxColumns>5</maxColumns>
@@ -30,7 +30,7 @@
             </mogSafe>
             <mogSatchel>
                 <maxColumns>5</maxColumns>
-                <visible>true</visible>
+                <visible>false</visible>
             </mogSatchel>
             <mogStorage>
                 <maxColumns>4</maxColumns>
@@ -41,8 +41,8 @@
                 <visible>false</visible>
             </mogWardrobe>
             <pos>
-                <x>-605</x>
-                <y>-200</y>
+                <x>-315</x>
+                <y>-27</y>
             </pos>
             <sort>true</sort>
             <spacing>4</spacing>
@@ -178,7 +178,7 @@
             </status>
             <tempInventory>
                 <maxColumns>1</maxColumns>
-                <visible>true</visible>
+                <visible>false</visible>
             </tempInventory>
             <treasury>
                 <maxColumns>1</maxColumns>
