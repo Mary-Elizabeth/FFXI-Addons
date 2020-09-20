@@ -1,12 +1,37 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <active>true</active>
-        <crooked_cards>1</crooked_cards>
-        <roll>Samurai Roll,Chaos Roll</roll>
+        <add_to_chat_mode>8</add_to_chat_mode>
+        <colors>
+            <bg>
+                <blue>0</blue>
+                <green>0</green>
+                <red>0</red>
+            </bg>
+            <bgall>
+                <blue>0</blue>
+                <green>75</green>
+                <red>0</red>
+            </bgall>
+            <needed>
+                <blue>50</blue>
+                <green>50</green>
+                <red>255</red>
+            </needed>
+            <obtained>
+                <blue>100</blue>
+                <green>255</green>
+                <red>100</red>
+            </obtained>
+            <pool>
+                <blue>0</blue>
+                <green>170</green>
+                <red>255</red>
+            </pool>
+        </colors>
         <text>
             <bg>
-                <alpha>255</alpha>
+                <alpha>150</alpha>
                 <blue>0</blue>
                 <green>0</green>
                 <red>0</red>
@@ -19,7 +44,7 @@
                 <italic>false</italic>
                 <right>false</right>
             </flags>
-            <padding>0</padding>
+            <padding>8</padding>
             <pos>
                 <x>0</x>
                 <y>0</y>
@@ -27,7 +52,7 @@
             <text>
                 <alpha>255</alpha>
                 <blue>255</blue>
-                <font>Arial</font>
+                <font>Consolas</font>
                 <fonts>
 
                 </fonts>
@@ -43,14 +68,16 @@
                 </stroke>
             </text>
         </text>
+        <tracking>briareus</tracking>
+        <visible>true</visible>
     </global>
-    <clubfoot>
-        <roll>Chaos Roll,Samurai Roll</roll>
+    <carleigh>
         <text>
             <pos>
-                <x>1035</x>
-                <y>750</y>
+                <x>1393</x>
+                <y>339</y>
             </pos>
         </text>
-    </clubfoot>
+        <tracking>sobek</tracking>
+    </carleigh>
 </settings>
