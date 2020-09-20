@@ -2,10 +2,10 @@
 <settings>
     <global>
         <font>Arial</font>
-        <font_size>14</font_size>
+        <font_size>12</font_size>
         <pos>
-            <x>400</x>
-            <y>50</y>
+            <x>600</x>
+            <y>730</y>
         </pos>
     </global>
 </settings>

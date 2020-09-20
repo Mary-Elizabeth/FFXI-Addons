@@ -9,7 +9,7 @@
                 <visible>false</visible>
             </equipment>
             <inventory>
-                <maxColumns>5</maxColumns>
+                <maxColumns>2</maxColumns>
                 <visible>true</visible>
             </inventory>
             <mogCase>
@@ -41,8 +41,8 @@
                 <visible>false</visible>
             </mogWardrobe>
             <pos>
-                <x>-315</x>
-                <y>-27</y>
+                <x>-14</x>
+                <y>-20</y>
             </pos>
             <sort>true</sort>
             <spacing>4</spacing>
@@ -83,16 +83,16 @@
                     <background>
                         <color>
                             <alpha>150</alpha>
-                            <blue>0</blue>
-                            <green>0</green>
-                            <red>0</red>
+                            <blue>150</blue>
+                            <green>150</green>
+                            <red>150</red>
                         </color>
                     </background>
                     <color>
                         <alpha>150</alpha>
-                        <blue>0</blue>
-                        <green>0</green>
-                        <red>0</red>
+                        <blue>100</blue>
+                        <green>100</green>
+                        <red>100</red>
                     </color>
                 </empty>
                 <equipment>
