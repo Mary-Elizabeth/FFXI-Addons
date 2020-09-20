@@ -218,6 +218,9 @@ function listitem:updateBarAndText(bar, text, val, valPercent, distance, barType
 	elseif barType == 'tp' then
 		if val >= 1000 then
 			color = self.tpFullColor
+			self.tpBar:changeFg('assets/tp_full.png')
+		else
+			self.tpBar:changeFg('assets/tp_fg.png')
 		end
 	end
 
