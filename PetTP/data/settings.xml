@@ -18,8 +18,8 @@
         </flags>
         <padding>0</padding>
         <pos>
-            <x>1706.6666666667</x>
-            <y>1423</y>
+            <x>500</x>
+            <y>500</y>
         </pos>
         <text>
             <alpha>255</alpha>
@@ -40,4 +40,10 @@
             </stroke>
         </text>
     </global>
+    <carleigh>
+        <pos>
+            <x>1735</x>
+            <y>716</y>
+        </pos>
+    </carleigh>
 </settings>

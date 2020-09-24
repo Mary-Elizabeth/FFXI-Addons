@@ -47,25 +47,24 @@ burstMagic = {
   ["impaction"] = "Thunder",
 }
 
---[[
-tierOrder = {
-  [1] = "VI",
-  [2] = "V",
-  [3] = "IV",
-  [4] = "III",
-  [5] = "II",
-  [6] = "I",
-}
---]]
 
-tierOrder = {
-  [4] = "VI",
-  [3] = "V",
-  [2] = "IV",
-  [1] = "III",
-  [5] = "II",
-  [6] = "I",
-}
+-- tierOrder = {
+--   [1] = "IV",
+--   [2] = "V",
+--   [3] = "VI",
+--   [4] = "III",
+--   [5] = "II",
+--   [6] = "I",
+-- }
+
+ tierOrder = {
+   [6] = "I",
+   [5] = "II",
+   [4] = "III",
+   [3] = "IV",
+   [2] = "V",
+   [1] = "VI",
+ }
 
 -- ---------------------------------------------------- --
 
@@ -148,9 +147,23 @@ end
 function CanUseSpell( spellName )
   -- FIRST CHECK THAT YOU CAN ACTUALLY CAST SPELL ( IE YOU HAVE REQUIRED LEVELS/JP/LEARNED )
   spell = res.spells:with( 'en', spellName )
+  spell_recasts = windower.ffxi.get_spell_recasts( )
 
   -- IF player, spell OR spell.levels IS NIL OR PLAYER IS DISABLED ( Stunned, Silenced, Petrified ETC ) THEN RETURN false AND CANCEL SPELL
   if ( player == nil ) or ( spell == nil ) or ( spell.levels[player.main_job_id] == nil ) or ( playerDisabled( ) == true ) then return false end
+  if player.vitals.mp < spell.mp_cost or spell_recasts[ spell.recast_id ] > 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
+    return false
+  end
+
+  --windower.add_to_chat(1,player.vitals.mp .. " " .. spell.mp_cost .. " " .. spell_recasts[ spell.recast_id ])
+  --windower.add_to_chat(1,spell.levels[player.main_job_id] .. " " .. player.main_job_level)
+  if player.main_job_level >= spell.levels[player.main_job_id] then -- YOU ARE THE REQUIRED LEVEL OR ABOVE IT
+    if windower.ffxi.get_spells( )[spell.id] then -- YOU POSSESS THE SPELL IE YOU USED A SCROLL TO LEARN IT OR SPENT MERIT POINTS
+      if player.vitals.mp > spell.mp_cost and spell_recasts[spell.recast_id] == 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
+        return true
+      end
+    end
+  end
 
   -- CHECK IF SPELL IS A JOB POINTED ONE IF NOT THEN JUST COMPARE LEVELS AND CHECK YOU OWN THE SPELL
   if spell.levels[player.main_job_id] == 100 then -- IS A JOB POINT SPELL THAT REQUIRES 100 JOB POINTS BEING SPENT
@@ -170,9 +183,17 @@ function CanUseSpell( spellName )
   else -- IS NOT A JOB POINT SPELL
     if spell.levels[player.main_job_id] >= player.main_job_level then -- YOU ARE THE REQUIRED LEVEL OR ABOVE IT
       if windower.ffxi.get_spells( )[spell.id] then -- YOU POSSESS THE SPELL IE YOU USED A SCROLL TO LEARN IT OR SPENT MERIT POINTS
-        if player.mp > spellData.mp_cost and spell_recasts( spell.recast_id ) == 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
+        if player.vitals.mp > spell.mp_cost and spell_recasts[spell.recast_id] == 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
           return true
         end
+      end
+    end
+  end
+
+  if player.main_job_level >= spell.levels[player.main_job_id] then -- YOU ARE THE REQUIRED LEVEL OR ABOVE IT
+    if windower.ffxi.get_spells( )[spell.id] then -- YOU POSSESS THE SPELL IE YOU USED A SCROLL TO LEARN IT OR SPENT MERIT POINTS
+      if player.vitals.mp > spell.mp_cost and spell_recasts[spell.recast_id ] == 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
+        return true
       end
     end
   end

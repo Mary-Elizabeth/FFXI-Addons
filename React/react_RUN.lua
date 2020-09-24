@@ -84,13 +84,20 @@ return {
                 ["ready_reaction"]="runaway 12"
             }
         },
-
-    ["Sovereign Behemoth"]={
-        ["Meteor"]={
-            ["complete_reaction"]="",
-            ["ready_reaction"]="input /ws Dimidiation <t>"
-        }
-      },
+        ["Bozzetto High Vicar"]={
+            ["Banishga II"]={
+                ["complete_reaction"]="",
+                ["ready_reaction"]="input /ws Dimidiation <t>"
+            },
+            ["Galumph"]={
+                ["complete_reaction"]="input /ws Dimidiation <t>",
+                ["ready_reaction"]=""
+            },
+            ["Cure VI"]={
+                ["complete_reaction"]="",
+                ["ready_reaction"]="input /ws Dimidiation <t>"
+            }
+        },
     ["Glassy Thinker"]={
         ["Pain Sync"]={
             ["complete_reaction"]="facemob",
