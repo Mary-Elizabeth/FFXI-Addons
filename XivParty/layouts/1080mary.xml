@@ -95,7 +95,7 @@
             <job>
                 <color>#ffc61a</color>
                 <font>Arial Black</font>
-                <offset>100,-7</offset>
+                <offset>90,-7</offset>
                 <size>8</size>
                 <stroke>#062D54C8</stroke>
                 <strokeWidth>1</strokeWidth>
@@ -119,7 +119,7 @@
             <subJob>
                 <color>#33d6ff</color>
                 <font>Arial Black</font>
-                <offset>100,3</offset>
+                <offset>90,3</offset>
                 <size>7</size>
                 <stroke>#062D54C8</stroke>
                 <strokeWidth>1</strokeWidth>

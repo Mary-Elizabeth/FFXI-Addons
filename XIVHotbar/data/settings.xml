@@ -24,7 +24,7 @@
             <ToggleBattleMode>43</ToggleBattleMode>
         </Controls>
         <Hotbar>
-            <EnableWeaponSwitching>false</EnableWeaponSwitching>
+            <EnableWeaponSwitching>true</EnableWeaponSwitching>
             <Environment>
                 <HookOntoBar>4</HookOntoBar>
                 <hook_onto_bar>4</hook_onto_bar>
@@ -88,10 +88,10 @@
                 <Green>255</Green>
                 <Red>255</Red>
             </Color>
-            <Font>sans-serif</Font>
+            <Font>Arial</Font>
             <OffsetX>-100</OffsetX>
             <OffsetY>0</OffsetY>
-            <Size>9</Size>
+            <Size>8</Size>
             <Stroke>
                 <Alpha>180</Alpha>
                 <Blue>0</Blue>
