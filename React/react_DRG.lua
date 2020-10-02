@@ -31,7 +31,20 @@ return {
           ["ready_reaction"]="turnaround"
         }
     },
-
+    ["Bozzetto High Vicar"]={
+        ["Banishga II"]={
+            ["complete_reaction"]="",
+            ["ready_reaction"]="input /ws Stardiver <t>"
+        },
+        ["Paralyze"]={
+          ["complete_reaction"]="",
+          ["ready_reaction"]="input /ws Stardiver <t>"
+        },
+        ["Cure VI"]={
+            ["complete_reaction"]="",
+            ["ready_reaction"]="input /ws Stardiver <t>"
+        }
+    },
     ["Khun"]={
             ["Shah Mat"]={
                 ["complete_reaction"]="",

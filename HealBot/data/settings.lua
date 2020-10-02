@@ -25,8 +25,8 @@ return {
             ['font'] = 'Arial',
             ['size'] = 10,
             ['visible'] = true,
-            ['x'] = -125,
-            ['y'] = 150
+            ['x'] = -130,
+            ['y'] = 170
         },
         ['montoredBox'] = {
             ['font'] = 'Arial',

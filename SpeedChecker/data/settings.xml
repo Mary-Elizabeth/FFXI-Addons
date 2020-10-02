@@ -15,21 +15,21 @@
             <italic>false</italic>
             <right>false</right>
         </flags>
-        <padding>0</padding>
+        <padding>-3</padding>
         <pos>
-            <x>151</x>
-            <y>190</y>
+            <x>1468</x>
+            <y>823</y>
         </pos>
         <text>
             <alpha>255</alpha>
             <blue>255</blue>
-            <font>Arial</font>
+            <font>Arial Narrow</font>
             <fonts>
 
             </fonts>
             <green>255</green>
             <red>255</red>
-            <size>12</size>
+            <size>9</size>
             <stroke>
                 <alpha>255</alpha>
                 <blue>0</blue>
@@ -39,16 +39,4 @@
             </stroke>
         </text>
     </global>
-    <aerich>
-        <pos>
-            <x>3</x>
-            <y>0</y>
-        </pos>
-    </aerich>
-    <enus>
-        <pos>
-            <x>1869</x>
-            <y>1055</y>
-        </pos>
-    </enus>
 </settings>

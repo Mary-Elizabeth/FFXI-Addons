@@ -9,16 +9,18 @@
             </filters>
         </buffs>
         <hideSolo>false</hideSolo>
-        <layout>auto</layout>
-        <posX>50</posX>
-        <posY>400</posY>
+        <layout>1080mary</layout>
+        <posX>1374</posX>
+        <posY>730</posY>
         <rangeIndicator>0</rangeIndicator>
-        <spacingY>4</spacingY>
+        <spacingY>17</spacingY>
     </global>
+
+ 
     <carleigh>
         <layout>1080mary</layout>
-        <posX>1409</posX>
-        <posY>726</posY>
+        <posX>1374</posX>
+        <posY>730</posY>
         <rangeIndicator>5</rangeIndicator>
         <spacingY>17</spacingY>
     </carleigh>

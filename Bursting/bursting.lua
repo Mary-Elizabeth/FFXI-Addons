@@ -69,14 +69,14 @@ local spell_strengths = {
 }
 
 
-local storms = { 
-	{name = 'Firestorm', weather = 'Fire'}, 
-	{name = 'Hailstorm', weather = 'Ice'}, 
-	{name = 'Windstorm', weather = 'Wind'}, 
-	{name = 'Sandstorm', weather = 'Earth'}, 
-	{name = 'Thunderstorm', weather = 'Thunder'}, 
-	{name = 'Rainstorm', weather = 'Water'}, 
-	{name = 'Aurorastorm', weather = 'Light'}, 
+local storms = {
+	{name = 'Firestorm', weather = 'Fire'},
+	{name = 'Hailstorm', weather = 'Ice'},
+	{name = 'Windstorm', weather = 'Wind'},
+	{name = 'Sandstorm', weather = 'Earth'},
+	{name = 'Thunderstorm', weather = 'Thunder'},
+	{name = 'Rainstorm', weather = 'Water'},
+	{name = 'Aurorastorm', weather = 'Light'},
 	{name = 'Voidstorm', weather = 'Dark'},
 }
 
@@ -107,7 +107,7 @@ windower.register_event('addon command', function(...)
 	if arg[1] == 'force' then
 		forced = true
 		activeSkillchain = skillchains[302] -- SET to 302 after testing!!!
-		
+
 		for i = 1, #arg - 1 do
 			arg[i] = arg[i + 1]
 		end
@@ -216,12 +216,12 @@ windower.register_event('addon command', function(...)
 	end
 
 	skillchain_element = mobExceptions(skillchain_element, forced)
-	
-	
+
+
 	if elements[skillchain_element][spell_selectedType] then
 		spellToCast = elements[skillchain_element][spell_selectedType] .. spell_tiers[spell_selectedTier]
 	end
-	
+
 	if spellToCast then
 		if debug then print('Casting: ' .. spellToCast) end
 		windower.send_command('input /ma "' .. spellToCast .. '" <t>')
@@ -237,14 +237,14 @@ function mobExceptions(skillchain_element, forced)
 	if not battle_target then
 		return skillchain_element
 	end
-	
+
 	if battle_target.name:contains(' Crab') and skillchain_element == 'Water' and (activeSkillchain.english == 'Distortion' or activeSkillchain.english == 'Darkness' or forced) then
 		if debug then print('Water detected on crab: Changing to Blizzard') end
 		return 'Ice'
 	elseif battle_target.name:contains(' Elemental') then
 		if forced then
 			if debug then print(skillchain_element .. ' forced on ' .. skillchain_element .. ' Elemental. Changing to weakness') end
-			
+
 			if battle_target.name == 'Air Elemental' then
 				battle_target.name = 'Wind Elemental'
 			end
@@ -261,10 +261,10 @@ end
 windower.register_event('incoming chunk', function(id, orig)
 	if id == 0x28 then
 		local packet = windower.packets.parse_action(orig)
-		
+
 		for _, target in pairs(packet.targets) do
 			local battle_target = windower.ffxi.get_mob_by_target("bt")
-			
+
 			if battle_target ~= nil and target.id == battle_target.id then
 				for _, action in pairs(target.actions) do
 					if action.add_effect_message > 287 and action.add_effect_message < 302 then
@@ -287,7 +287,7 @@ windower.register_event('incoming chunk', function(id, orig)
 						end
 					end
 				end
-			end			
+			end
 		end
 	end
 end)
