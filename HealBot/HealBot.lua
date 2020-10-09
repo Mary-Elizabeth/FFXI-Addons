@@ -152,7 +152,6 @@ hb._events['render'] = windower.register_event('prerender', function()
                 healer.last_move_check = now      --Refresh stored movement check time
             end
         end
-        
         if hb.active and not (moving or acting) then
             --hb.active = false    --Quick stop when debugging
             if healer:action_delay_passed() then
@@ -160,7 +159,7 @@ hb._events['render'] = windower.register_event('prerender', function()
                 actions.take_action(player, partner, targ)
             end
         end
-        
+
         if hb.active and ((now - healer.last_ipc_sent) > healer.ipc_delay) then
             windower.send_ipc_message(ipc_req)
             healer.last_ipc_sent = now
@@ -280,7 +279,7 @@ end
 function hb.isPerformingAction(moving)
     local acting = healer:is_acting()
     local status = ('is %s'):format(acting and 'performing an action' or (moving and 'moving' or 'idle'))
-    
+
     if (os.clock() - healer.zone_enter) < 25 then
         acting = true
         status = 'zoned recently'
@@ -292,7 +291,7 @@ function hb.isPerformingAction(moving)
         acting = true
         status = 'is disabled'
     end
-    
+
     local player = windower.ffxi.get_player()
     if (player ~= nil) then
         local mpp = player.vitals.mpp
@@ -300,7 +299,7 @@ function hb.isPerformingAction(moving)
             status = status..' | \\cs(255,0,0)LOW MP\\cr'
         end
     end
-    
+
     local hb_status = hb.active and '\\cs(0,0,255)[ON]\\cr' or '\\cs(255,0,0)[OFF]\\cr'
     hb.txts.actionInfo:text((' %s %s %s'):format(hb_status, healer.name, status))
     hb.txts.actionInfo:visible(settings.textBoxes.actionInfo.visible)
@@ -315,7 +314,7 @@ function hb.process_ipc(msg)
     elseif type(loaded) ~= 'table' then
         atcfs(264, 'IPC message: %s', loaded)
     elseif loaded.method == 'GET' then
-        if loaded.pk ~= nil then        
+        if loaded.pk ~= nil then
             if loaded.pk == 'buff_ids' then
                 local player = windower.ffxi.get_player()
                 local response = {
@@ -331,9 +330,9 @@ function hb.process_ipc(msg)
             atcfs(123, 'Invalid GET request: %s', msg)
         end
     elseif loaded.method == 'POST' then
-        if loaded.pk ~= nil then        
+        if loaded.pk ~= nil then
             if loaded.pk == 'buff_ids' then
-                if loaded.name ~= nil then                
+                if loaded.name ~= nil then
                     local player = windower.ffxi.get_mob_by_name(loaded.name)
                     player = player or {id=loaded.pid,name=loaded.name,spawn_type=loaded.stype}
                     buffs.review_active_buffs(player, loaded.val)

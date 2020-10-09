@@ -217,11 +217,14 @@ function reset()
 end
 
 function status_change(new,old)
-    --is_casting = false
-    if new > 1 and new < 4 then
+  if new == 1 then --modified by Erik
+    actions = true --modified by Erik
+    cor_status:text(display_box()) --modified by Erik
+  elseif new > 1 and new < 4 then
         reset()
     end
 end
+
 
 windower.register_event('status change', status_change)
 windower.register_event('zone change','job change','logout', reset)

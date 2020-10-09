@@ -29,7 +29,7 @@ end
 --]]
 function actions.get_defensive_action()
 	local action = {}
-	
+
 	if (not settings.disable.cure) then
 		local cureq = CureUtils.get_cure_queue()
 		while (not cureq:empty()) do
@@ -60,9 +60,9 @@ function actions.get_defensive_action()
 			end
 		end
 	end
-	
+
 	local_queue_disp()
-	
+
 	if (action.cure ~= nil) then
 		if (action.debuff ~= nil) and (action.debuff.action.en == 'Paralyna') and (action.debuff.name == healer.name) then
 			return action.debuff
@@ -105,6 +105,7 @@ function actions.take_action(player, partner, targ)
                 if (player.target_index == partner.target_index) then
                     if offense.assist.engage and partner_engaged and (not self_engaged) then
                         healer:send_cmd('input /attack on')
+                        facemob(actor) ---Custom code by erik to face mob
                     else
                         healer:take_action(actions.get_offensive_action(player), '<t>')
                     end
@@ -122,6 +123,22 @@ function actions.take_action(player, partner, targ)
 end
 
 
+function facemob(actor)---Custom code by erik to face mob
+	local target = {}---Custom code by erik to face mob
+	if actor then---Custom code by erik to face mob
+		target = actor---Custom code by erik to face mob
+	else---Custom code by erik to face mob
+		target = windower.ffxi.get_mob_by_index(windower.ffxi.get_player().target_index or 0)---Custom code by erik to face mob
+	end---Custom code by erik to face mob
+	local self_vector = windower.ffxi.get_mob_by_index(windower.ffxi.get_player().index or 0)---Custom code by erik to face mob
+	if target then  -- Please note if you target yourself you will face Due East
+		local angle = (math.atan2((target.y - self_vector.y), (target.x - self_vector.x))*180/math.pi)*-1---Custom code by erik to face mob
+		windower.ffxi.turn((angle):radian())---Custom code by erik to face mob
+	else---Custom code by erik to face mob
+		windower.add_to_chat(10,"HealBot: You're not targeting anything to face")---Custom code by erik to face mob
+	end---Custom code by erik to face mob
+end---Custom code by erik to face mob
+
 --[[
 	Builds an action queue for offensive actions.
     Returns the action deemed most important at the time.
@@ -131,7 +148,7 @@ function actions.get_offensive_action(player)
 	local target = windower.ffxi.get_mob_by_target()
     if target == nil then return nil end
     local action = {}
-    
+
     --Prioritize debuffs over nukes/ws
     local dbuffq = offense.getDebuffQueue(player, target)
     while not dbuffq:empty() do
@@ -141,17 +158,17 @@ function actions.get_offensive_action(player)
             action.db = dbact
         end
     end
-    
+
     local_queue_disp()
     if action.db ~= nil then
         return action.db
     end
-    
+
     if (not settings.disable.ws) and (settings.ws ~= nil) and healer:ready_to_use(lor_res.action_for(settings.ws.name)) then
         local sign = settings.ws.sign or '>'
         local hp = settings.ws.hp or 0
         local hp_ok = ((sign == '<') and (target.hpp <= hp)) or ((sign == '>') and (target.hpp >= hp))
-        
+
         local partner_ok = true
         if (settings.ws.partner ~= nil) then
             local pname = settings.ws.partner.name
@@ -164,7 +181,7 @@ function actions.get_offensive_action(player)
                 atc(123,'Unable to locate weaponskill partner '..pname)
             end
         end
-        
+
         if (hp_ok and partner_ok) then
             return {action=lor_res.action_for(settings.ws.name),name='<t>'}
         end
@@ -182,7 +199,7 @@ function actions.get_offensive_action(player)
             end
         end
     end
-    
+
     atcd('get_offensive_action: no offensive actions to perform')
 	return nil
 end

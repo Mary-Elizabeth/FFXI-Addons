@@ -28,7 +28,7 @@
 
 _addon.name = 'XivParty'
 _addon.author = 'Tylas'
-_addon.version = '1.2.0'
+_addon.version = '1.3.0'
 _addon.commands = {'xp', 'xivparty'}
 
 config = require('config')
@@ -100,20 +100,20 @@ end)
 function init()
 	if settings.hideSolo and isSolo() then return end
 	if isInitialized then return end
-	
+
 	utils:log('Initializing...')
 	loadFilters()
 	view:init()
 	view:pos(settings.posX, settings.posY)
 	view:show()
-	
+
 	isInitialized = true
 end
 
 function dispose()
 	utils:log('Disposing...')
 	isInitialized = false
-	
+
 	view:dispose()
 	model:clear()
 end
@@ -134,7 +134,7 @@ windower.register_event('prerender', function()
 	end
 
 	if not isInitialized then return end
-	
+
 	updatePlayers()
 	view:update()
 end)
@@ -145,11 +145,11 @@ function updatePlayers()
 	local zone = windower.ffxi.get_info().zone
 	local target = windower.ffxi.get_mob_by_target('t')
 	local subtarget = windower.ffxi.get_mob_by_target('st')
-	
+
 	for i = 0, 5 do
 		local key = 'p%i':format(i % 6)
 		local member = party[key]
-		
+
 		if member then
 			local foundPlayer = model:findAndSortPlayer(member, i)
 			if not foundPlayer then
@@ -161,16 +161,21 @@ function updatePlayers()
 					table.insert(model.players, i, player:init())
 				end
 			end
-			
+
 			local player = model.players[i]
-			
+
 			player.isSelected = (target ~= nil and member.mob ~= nil and target.id == member.mob.id)
 			player.isSubTarget = (subtarget ~= nil and member.mob ~= nil and subtarget.id == member.mob.id)
 			player.name = member.name
-		
+
 			if (member.zone ~= zone) then -- outside zone
 				player:clear()
-				player.zone = '('..res.zones[member.zone].name..')'
+
+				if layout.text.zone.short then
+					player.zone = '('..res.zones[member.zone]['search']..')'
+				else
+					player.zone = '('..res.zones[member.zone].name..')'
+				end
 			else
 				player.hp = member.hp
 				player.mp = member.mp
@@ -179,21 +184,23 @@ function updatePlayers()
 				player.mpp = member.mpp
 				player.tpp = math.min(member.tp / 10, 100)
 				player.zone = ''
-				
+
 				if member.mob then
 					player.id = member.mob.id
 					player.distance = member.mob.distance
-					
+
 					model:mergeTempBuffs(player)
 				else
 					player.distance = 99999
 				end
-				
-				if (member.name == mainPlayer.name) then -- set buffs and job info for main player
+        -- if player.id == windower.ffxi.get_party().party1_leader then --customization by Erik for identifying party1_leader
+        --       layout.text.name.color = layout.text.name.party1_leader.color --customization by Erik for identifying party1_leader
+        -- end--customization by Erik for identifying party1_leader
+        if (member.name == mainPlayer.name) then -- set buffs and job info for main player
 					player:updateBuffs(mainPlayer.buffs, model.buffFilters)
 					player.job = res.jobs[mainPlayer.main_job_id].name_short
 					player.jobLvl = mainPlayer.main_job_level
-					
+
 					if (mainPlayer.sub_job_id) then -- only if subjob is set
 						player.subJob = res.jobs[mainPlayer.sub_job_id].name_short
 						player.subJobLvl = mainPlayer.sub_job_level
@@ -202,7 +209,7 @@ function updatePlayers()
 			end
 		else
 			local player = model.players[i]
-		
+
 			if player then
 				for tp in model.tempPlayers:it() do
 					if tp == player then
@@ -211,7 +218,7 @@ function updatePlayers()
 						break
 					end
 				end
-				
+
 				player:dispose()
 				model.players[i] = nil
 			end
@@ -228,7 +235,7 @@ windower.register_event('incoming chunk',function(id,original,modified,injected,
 			if packet then
 				local playerId = packet['ID']
 				utils:log('PACKET: Char update for player ID: '..playerId, 0)
-			
+
 				local foundPlayer = model:findOrCreateTempPlayer(nil, playerId)
 				updatePlayerJobFromPacket(foundPlayer, packet)
 			end
@@ -240,7 +247,7 @@ windower.register_event('incoming chunk',function(id,original,modified,injected,
 				local playerId = packet['ID']
 				if name then
 					utils:log('PACKET: Party member update for '..name, 0)
-					
+
 					local foundPlayer = model:findOrCreateTempPlayer(name, playerId)
 					updatePlayerJobFromPacket(foundPlayer, packet)
 				else
@@ -251,23 +258,23 @@ windower.register_event('incoming chunk',function(id,original,modified,injected,
 			end
 		end
 	end
-	
+
 	if not zoning and id == 0x076 then -- party buffs (Credit: Kenshi, PartyBuffs)
         for k = 0, 4 do
             local playerId = original:unpack('I', k*48+5)
-            
+
             if playerId ~= 0 then -- NOTE: main player buffs are not available here
 				local buffsList = {}
-				
+
                 for i = 1, 32 do -- starting at 1 to match the offset in windower.ffxi.get_player().buffs
                     local buff = original:byte(k*48+5+16+i-1) + 256*( math.floor( original:byte(k*48+5+8+ math.floor((i-1)/4)) / 4^((i-1)%4) )%4) -- Credit: Byrth, GearSwap
-					
-					if buff == 255 then -- push empty buffs to a higher number so they get sorted at the end of the list
-						buff = 1000
+
+					if buff == 255 then -- empty buff
+						buff = nil
 					end
 					buffsList[i] = buff
                 end
-				
+
 				local foundPlayer = model:findPlayer(nil, playerId)
 				if not foundPlayer then
 					utils:log('Player with ID '..tostring(playerId)..' not found. Storing temporary buffs.', 2)
@@ -279,7 +286,7 @@ windower.register_event('incoming chunk',function(id,original,modified,injected,
             end
         end
     end
-	
+
 	if id == 0xB then
 		utils:log('Zoning...')
         zoning = true
@@ -298,14 +305,14 @@ function updatePlayerJobFromPacket(player, packet)
 	local sJob =  packet['Sub job']
 	local sJobLvl = packet['Sub job level']
 	local playerId = packet['ID']
-	
+
 	if (mJob and mJobLvl and sJob and sJobLvl and mJobLvl > 0) then
 		player.id = playerId
 		player.job = res.jobs[mJob].name_short
 		player.jobLvl = mJobLvl
 		player.subJob = res.jobs[sJob].name_short
 		player.subJobLvl = sJobLvl
-		
+
 		utils:log('Set job info: '..res.jobs[mJob].name_short..tostring(mJobLvl)..'/'..res.jobs[sJob].name_short..tostring(sJobLvl), 0)
 	else
 		utils:log('Unusable job info. Dropping.', 0)
@@ -326,7 +333,7 @@ function loadLayout(layoutName)
 		else
 			layoutName = layout1440
 		end
-		
+
 		--print('Detected Y resolution ' .. tostring(resY) .. '. Loading layout \'' .. layoutName .. '\'.')
 	end
 
@@ -347,8 +354,8 @@ end
 
 function saveFilters()
 	settings.buffs.filters = ''
-	
-	for buffId, doFilter in pairs(model.buffFilters) do 
+
+	for buffId, doFilter in pairs(model.buffFilters) do
 		-- why add a semicolon even on the first element? because config.lua will mistake a single element as a number and not a string
 		settings.buffs.filters = settings.buffs.filters .. tostring(buffId) .. ';'
 	end
@@ -364,10 +371,13 @@ end
 function checkBuff(buffId)
 	if buffId and res.buffs[buffId] then
 		return true
+	elseif not buffId then
+		log('Invalid buff ID.')
 	else
 		log('Buff with ID ' .. buffId .. ' not found.')
-		return false
 	end
+
+	return false
 end
 
 function getBuffText(buffId)
@@ -377,6 +387,23 @@ function getBuffText(buffId)
 	else
 		return tostring(buffId)
 	end
+end
+
+function getRange(arg)
+	if not arg then return nil end
+
+	local range = string.lower(arg)
+	if range == 'off' then
+		range = 0
+	else
+		range = tonumber(range)
+	end
+
+	if not range then
+		log('Invalid range \'' .. arg .. '\'.')
+	end
+
+	return range
 end
 
 function zoningFinished()
@@ -392,7 +419,7 @@ windower.register_event('addon command', function(...)
 	if args[1] then
 		command = string.lower(args[1])
 	end
-	
+
 	if command == 'move' then
 		local ret = handleCommandOnOff(view:moveEnabled(), args[2], 'Mouse dragging')
 		view:moveEnabled(ret)
@@ -400,20 +427,33 @@ windower.register_event('addon command', function(...)
 		local ret = handleCommandOnOff(settings.hideSolo, args[2], 'Party list hiding while solo')
 		settings.hideSolo = ret
 		settings:save()
+	elseif command == 'alignbottom' then
+		local ret = handleCommandOnOff(settings.alignBottom, args[2], 'Bottom alignment')
+		settings.alignBottom = ret
+		settings:save()
+		view:pos(settings.posX, settings.posY)
 	elseif command == 'customorder' then
 		local ret = handleCommandOnOff(settings.buffs.customOrder, args[2], 'Custom buff ordering')
 		settings.buffs.customOrder = ret
 		settings:save()
 	elseif command == 'range' then
 		if args[2] then
-			local range = string.lower(args[2])
-			if range == 'off' then
-				range = 0
-			else
-				range = tonumber(range)
+			local range1 = getRange(args[2])
+			local range2 = getRange(args[3])
+			if range1 then
+				settings.rangeIndicator = range1
+				if range2 then
+					settings.rangeIndicatorFar = range2
+
+					if settings.rangeIndicator > settings.rangeIndicatorFar then
+						settings.rangeIndicator = range2
+						settings.rangeIndicatorFar = range1
+					end
+				else
+					settings.rangeIndicatorFar = 0
+				end
+				settings:save()
 			end
-			settings.rangeIndicator = range
-			settings:save()
 		else
 			showHelp()
 		end
@@ -470,7 +510,7 @@ windower.register_event('addon command', function(...)
 			log('Your active buffs:')
 		end
 		for i = 1, 32 do
-			if buffs[i] and buffs[i] ~= 1000 and buffs[i] ~= 255 then
+			if buffs[i] then
 				log(getBuffText(buffs[i]))
 			end
 		end
@@ -478,14 +518,14 @@ windower.register_event('addon command', function(...)
 		if args[2] then
 			local isAuto = args[2] == layoutAuto
 			local filename = 'layouts/' .. args[2] .. '.xml'
-			
+
 			if isAuto or file.exists(filename) then
 				if isAuto then
 					log('Enabled automatic resolution based layout selection.')
 				else
 					log('Loading layout \'' .. args[2] .. '\'.')
 				end
-				
+
 				dispose()
 				loadLayout(args[2])
 				settings.layout = args[2]
@@ -520,16 +560,16 @@ function handleCommand(currentValue, argsString, text, option1String, option1Val
 			setValue = option1Value
 		end
 	else
-		log('Unknown parameter \'' .. argsString .. '\'')
+		log('Unknown parameter \'' .. argsString .. '\'.')
 		return currentValue
 	end
-	
+
 	local setString = option1String
 	if setValue == option2Value then
 		setString = option2String
 	end
 	log(text .. ' is now ' .. setString .. '.')
-	
+
 	return setValue
 end
 
@@ -542,9 +582,10 @@ function showHelp()
 	log('   list - shows list of currently set filters')
 	log('   mode - switches between blacklist and whitelist mode (both use same filter list)')
 	log('buffs <name> - shows list of currently active buffs and their IDs for a party member')
-	log('range <distance> - shows a marker for each party member closer than the set distance (off or 0 to disable)')
+	log('range <near> <far> - shows a marker for each party member closer than the set distances (off or 0 to disable)')
 	log('customOrder - toggles custom buff ordering (customize in bufforder.lua)')
 	log('hideSolo - hides the party list while solo')
+	log('alignBottom - expands the party list from bottom to top')
 	log('move - move the UI via drag and drop, mouse wheel to adjust space between party members')
 	log('layout <file> - loads a UI layout file. Use \'auto\' to enable resolution based selection.')
 end

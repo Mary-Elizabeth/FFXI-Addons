@@ -89,9 +89,9 @@ return {
                 ["complete_reaction"]="",
                 ["ready_reaction"]="input /ws Dimidiation <t>"
             },
-            ["Galumph"]={
-                ["complete_reaction"]="input /ws Dimidiation <t>",
-                ["ready_reaction"]=""
+            ["Paralyze"]={
+              ["complete_reaction"]="",
+              ["ready_reaction"]="input /ws Stardiver <t>"
             },
             ["Cure VI"]={
                 ["complete_reaction"]="",

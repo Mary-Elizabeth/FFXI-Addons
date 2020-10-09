@@ -47,24 +47,25 @@ burstMagic = {
   ["impaction"] = "Thunder",
 }
 
+--for RDM
+tierOrder = {
+  [6] = "IV",
+  [5] = "V",
+  [3] = "VI",
+  [3] = "III",
+  [1] = "II",
+  [2] = "I",
+}
 
--- tierOrder = {
---   [1] = "IV",
---   [2] = "V",
---   [3] = "VI",
---   [4] = "III",
---   [5] = "II",
---   [6] = "I",
--- }
-
- tierOrder = {
-   [6] = "I",
-   [5] = "II",
-   [4] = "III",
-   [3] = "IV",
-   [2] = "V",
-   [1] = "VI",
- }
+--for BLM
+ -- tierOrder = {
+ --   [6] = "I",
+ --   [5] = "II",
+ --   [4] = "III",
+ --   [3] = "IV",
+ --   [2] = "V",
+ --   [1] = "VI",
+ -- }
 
 -- ---------------------------------------------------- --
 
@@ -216,9 +217,9 @@ function castSpell(spell, burst)
   --windower.send_command('wait 6.0; gs c set AutoNukeMode on')
 
   if target ~= nil and target.is_npc then
-    windower.send_command('wait 2; input /ma "'..spell..'" <t>')
+    windower.send_command('input /ma "'..spell..'" <t>') ---wait 2 for blm wait 0.1; 
   else
-    windower.send_command('wait 2; input /ma "'..spell..'" <bt>')
+    windower.send_command('input /ma "'..spell..'" <bt>') ---wait2 for BLM wait 0.1;
   end
 end
 

@@ -142,6 +142,7 @@ profiles['shield'] = S{
 	--'Lightng. Crystal',
 }
 profiles['junk'] = S{
+	'Prize Powder',
 	'Ahriman Lens',
 	'Porxie Pork',
 	'light crystal',
