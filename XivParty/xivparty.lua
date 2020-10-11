@@ -193,9 +193,11 @@ function updatePlayers()
 				else
 					player.distance = 99999
 				end
+
         -- if player.id == windower.ffxi.get_party().party1_leader then --customization by Erik for identifying party1_leader
         --       layout.text.name.color = layout.text.name.party1_leader.color --customization by Erik for identifying party1_leader
         -- end--customization by Erik for identifying party1_leader
+
         if (member.name == mainPlayer.name) then -- set buffs and job info for main player
 					player:updateBuffs(mainPlayer.buffs, model.buffFilters)
 					player.job = res.jobs[mainPlayer.main_job_id].name_short

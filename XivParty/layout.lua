@@ -137,13 +137,8 @@ layout.text.name.stroke = '#062D54C8'
 layout.text.name.strokeWidth = 2
 layout.text.name.offset = L{ 65, 1 }
 
--- layout.text.name.party1_leader = {} ---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.font = 'Arial'---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.size = 15---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.color = '#90DF15'---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.stroke = '#062D54C8'---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.strokeWidth = 2---customization by Erik for identifying party1_leader
--- layout.text.name.party1_leader.offset = L{ 65, 1 }---customization by Erik for identifying party1_leader
+layout.text.name.party1_leader = {} ---customization by Erik for identifying party1_leader
+layout.text.name.party1_leader.color = '#ffc107'---customization by Erik for identifying party1_leader
 
 layout.text.zone = {}
 layout.text.zone.font = 'Arial'

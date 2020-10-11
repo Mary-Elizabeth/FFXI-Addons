@@ -24,7 +24,6 @@ local knownMP_monsters = S{ "Apex Crab" }
 -- USER SETTINGS MAKE SURE TO EDIT -------------------- --
 
 local AssistedPlayer = "Carleigh" -- MAKE SURE TO EDIT THIS
-
 burstMagic = {
   -- LEVEL 3  and 4
   ["radiance"] = "Thunder",
@@ -48,25 +47,83 @@ burstMagic = {
 }
 
 --for RDM
-tierOrder = {
-  [6] = "IV",
-  [5] = "V",
-  [3] = "VI",
-  [3] = "III",
-  [1] = "II",
-  [2] = "I",
-}
+-- tierOrder = {
+--   [6] = "IV",
+--   [5] = "V",
+--   [3] = "VI",
+--   [3] = "III",
+--   [1] = "II",
+--   [2] = "I",
+-- }
 
---for BLM
- -- tierOrder = {
- --   [6] = "I",
- --   [5] = "II",
- --   [4] = "III",
- --   [3] = "IV",
- --   [2] = "V",
- --   [1] = "VI",
- -- }
 
+ tierOrder = {
+   -- [6] = "I",
+   -- [5] = "II",
+   -- [4] = "III",
+   -- [3] = "IV",
+   -- [2] = "V",
+   -- [1] = "VI",
+ }
+
+ jobTierOrders = {
+   ["BLM"] = {
+     [6] = "I",
+     [5] = "II",
+     [4] = "III",
+     [3] = "IV",
+     [2] = "V",
+     [1] = "VI",
+   },
+   ["RDM"] = {
+        [6] = "IV",
+        [5] = "V",
+        [4] = "I",
+        [3] = "IV",
+        [2] = "III",
+        [1] = "II",
+      },
+ }
+
+ function getTierOrder()
+   local val = jobTierOrders[player.main_job]
+   if val ~= nil then
+     return val
+   end
+
+   return {
+     [6] = "I",
+     [5] = "II",
+     [4] = "III",
+     [3] = "IV",
+     [2] = "V",
+     [1] = "VI",
+   }
+ end
+
+
+
+ -- function tierOrder()
+ --   if player.main_job == "BLM" then
+ --     tierOrder = {
+ --       [6] = "I",
+ --       [5] = "II",
+ --       [4] = "III",
+ --       [3] = "IV",
+ --       [2] = "V",
+ --       [1] = "VI",
+ --     }
+ --   else
+ --     tierOrder = {
+ --       [6] = "IV",
+ --       [5] = "V",
+ --       [4] = "VI",
+ --       [3] = "I",
+ --       [2] = "III",
+ --       [1] = "II",
+ --     }
+ --   end
+ -- end
 -- ---------------------------------------------------- --
 
 function CheckIfBursting( )
@@ -153,9 +210,10 @@ function CanUseSpell( spellName )
   -- IF player, spell OR spell.levels IS NIL OR PLAYER IS DISABLED ( Stunned, Silenced, Petrified ETC ) THEN RETURN false AND CANCEL SPELL
   if ( player == nil ) or ( spell == nil ) or ( spell.levels[player.main_job_id] == nil ) or ( playerDisabled( ) == true ) then return false end
   if player.vitals.mp < spell.mp_cost or spell_recasts[ spell.recast_id ] > 0 then -- RECAST IS AVAILABLE AND YOU HAVE THE REQUIRED MP
+
     return false
   end
-
+  --windower.add_to_chat(123, 'player mp: ' .. player.vitals.mp .. ', spell cost: ' .. spell.mp_cost)
   --windower.add_to_chat(1,player.vitals.mp .. " " .. spell.mp_cost .. " " .. spell_recasts[ spell.recast_id ])
   --windower.add_to_chat(1,spell.levels[player.main_job_id] .. " " .. player.main_job_level)
   if player.main_job_level >= spell.levels[player.main_job_id] then -- YOU ARE THE REQUIRED LEVEL OR ABOVE IT
@@ -217,7 +275,7 @@ function castSpell(spell, burst)
   --windower.send_command('wait 6.0; gs c set AutoNukeMode on')
 
   if target ~= nil and target.is_npc then
-    windower.send_command('input /ma "'..spell..'" <t>') ---wait 2 for blm wait 0.1; 
+    windower.send_command('input /ma "'..spell..'" <t>') ---wait 2 for blm wait 0.1;
   else
     windower.send_command('input /ma "'..spell..'" <bt>') ---wait2 for BLM wait 0.1;
   end
@@ -243,7 +301,7 @@ function run_burst(skillchain)
   target = windower.ffxi.get_mob_by_target( 't' )
 
 
-  if S{'darkness', 'umbra', 'compression', 'gravitation'}:contains(skillchain) and player.vitals.mpp < 20 and target ~= nil and knownMP_monsters:contains( target.name ) then
+  if S{'darkness', 'umbra', 'compression', 'gravitation'}:contains(skillchain) and player.vitals.mpp < 30 and target ~= nil and knownMP_monsters:contains( target.name ) then
     windower.add_to_chat(1, ('\31\200\31\05Low MP Notice: \31\200\31\207 Attempting to recover MP with Aspir.'))
     if CanUseSpell( "Aspir III" ) then
       completed_Spell = "Aspir III"
@@ -253,6 +311,8 @@ function run_burst(skillchain)
       completed_Spell = "Aspir"
     end
   else
+    --tierOrder()
+    tierOrder = getTierOrder()
     for i, v in ipairs(tierOrder) do
       if v == "I" then
         if CanUseSpell( generated_spell ) == true then

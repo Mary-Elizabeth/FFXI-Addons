@@ -34,22 +34,26 @@ function bar:init(barInfo)
 
 	local obj = {}
 	setmetatable(obj, bar) -- make handle lookup
-	
+
 	obj.imgBg = utils:createImage(barInfo.imgBg, layout.scale)
 	obj.imgFg = utils:createImage(barInfo.imgFg, layout.scale)
-	
+
 	obj.value = 1
 	obj.exactValue = 1
-	
+
 	obj.sizeBg = utils:coord(barInfo.imgBg.size)
 	obj.sizeFg = utils:coord(barInfo.imgFg.size)
-	
+
 	obj.size = {}
 	obj.size.width = obj.imgBg:scaledSize().width -- this assumes the BG is larger than the FG
 	obj.size.height = obj.imgBg:scaledSize().height
-	
+
 	return obj
 end
+
+function bar:changeFg(assetPath) ---Customization Addition made by the great MASTER NICHOLAS!!
+	self.imgFg:path(windower.addon_path .. assetPath)
+end -----
 
 function bar:dispose()
 	utils:log('Disposing bar', 1)
@@ -64,7 +68,7 @@ function bar:pos(x, y)
 	-- this centers the foreground image inside the background image, background assumed to be larger
 	local fgOffsetX = (self.sizeBg.x - self.sizeFg.x) / 2 * layout.scale
     local fgOffsetY = (self.sizeBg.y - self.sizeFg.y) / 2 * layout.scale
-	
+
 	self.imgBg:pos(x, y)
 	self.imgFg:pos(x + fgOffsetX, y + fgOffsetY)
 end
@@ -75,7 +79,7 @@ function bar:update(targetValue)
 		self.exactValue = self.exactValue + (targetValue - self.exactValue) * layout.bar.animSpeed
 		self.exactValue = math.min(math.max(self.exactValue, 0), 1) -- clamp to 0..1
 		self.value = utils:round(self.exactValue, 3)
-	
+
 		self.imgFg:size(self.sizeFg.x * self.value, self.sizeFg.y)
 	end
 end

@@ -479,7 +479,7 @@ function buy(cmd2)
 	if cmd2 == 'on' then
 		log('Turning on BUY function, loading addons')
 		settings.buy = true
-		windower.send_command('lua r powder; wait 1; lua r sparks; wait 1; lua r sellnpc')
+		windower.send_command('lua r unitynpc; wait 1; lua r sparks; wait 1; lua r sellnpc')
 		if ipcflag == false then
 			ipcflag = true
 			windower.send_ipc_message('buy on')
@@ -488,7 +488,7 @@ function buy(cmd2)
 	elseif cmd2 == 'off' then
 		log('Shutting off BUY function, unloading addons')
 		settings.buy = false
-		windower.send_command('lua u powder; wait 1; lua u sparks; wait 1; lua u sellnpc')
+		windower.send_command('lua u unitynpc; wait 1; lua u sparks; wait 1; lua u sellnpc')
 		if ipcflag == false then
 			ipcflag = true
 			windower.send_ipc_message('buy off')
@@ -509,10 +509,10 @@ function buy(cmd2)
 			ipcflag = false
 		elseif (cmd2 == 'powder' and settings.buy == true) then
 			log('Buying powders!')
-			windower.send_command('powder buy 3315')
+			windower.send_command('buypowder 1807')
 			if ipcflag == false then
 				ipcflag = true
-				windower.send_ipc_message('buy powder')
+				windower.send_ipc_message('buypowder')
 			end
 			ipcflag = false
 		elseif (cmd2 == 'ss' and settings.buy == true) then
@@ -1725,8 +1725,7 @@ windower.register_event('zone change', function(new,old)--mary
 		for k, v in pairs(windower.ffxi.get_party()) do --loop through all party members
 				if type(v) == 'table' then
 					if v.name ~= currentPC.name then --if party member is not current player
-						local exclusions = S{298,297,296,295,294,293,292,291,290,289,288,287,284,281,280,279,275,271,259,255,228,227,226,225,224,223,221,220}--279 walk of echos P2
-							--add_to_chat(305, v.zone)
+						local exclusions = S{298,297,296,295,294,293,292,291,290,289,288,287,284,281,280,279,275,271,259,255,228,227,226,225,224,223,221,220,39,40,41,42,135,136,185,186,187,188,215,216,217,218,255,253,254,264}--279 walk of echos P2
 						if v.zone == old and not exclusions:contains(new) then --279 walk of echos P2
 							windower.send_command('send ' .. v.name .. ' setkey numpad8 down')
 							coroutine.sleep(1.5)
