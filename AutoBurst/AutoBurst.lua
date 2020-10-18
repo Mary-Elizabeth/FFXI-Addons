@@ -269,15 +269,14 @@ function castSpell(spell, burst)
   windower.add_to_chat(1, ('\31\200\31\05Burst located:\31\200\31\207 '.. firstToUpper(burst) .." Attempting cast: \31\200\31\05"..spell..'\31\200\31\207 '))
   windower.send_command('gs c set MagicBurstMode Single')
 --  windower.send_command('gs c set AutoNukeMode off')
-  --windower.send_command('input /ja "manawell" <me>')
   --windower.send_command('wait 3.0; gs c AutoNuke Thunder II')
 --Changed wait time from 2.0 to 1.5 to get big nukes off with Aerich
   --windower.send_command('wait 6.0; gs c set AutoNukeMode on')
 
   if target ~= nil and target.is_npc then
-    windower.send_command('input /ma "'..spell..'" <t>') ---wait 2 for blm wait 0.1;
+    windower.send_command('input /ma "'..spell..'" <t>')
   else
-    windower.send_command('input /ma "'..spell..'" <bt>') ---wait2 for BLM wait 0.1;
+    windower.send_command('input /ma "'..spell..'" <bt>')
   end
 end
 

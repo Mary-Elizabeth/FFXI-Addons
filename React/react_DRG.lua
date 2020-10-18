@@ -20,7 +20,12 @@ return {
             ["ready_reaction"]="input /heal"
         }
     },
-
+    ["Odin"]={
+         ["Zantetsuken"]={
+           ["complete_reaction"]="",
+           ["ready_reaction"]="input /heal"
+         }
+     },
     ["Bozzetto Charger"]={
         ["Scintillant Lance"]={
             ["complete_reaction"]="facemobp",

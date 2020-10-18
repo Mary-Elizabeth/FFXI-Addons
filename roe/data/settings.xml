@@ -6,23 +6,24 @@
         <clearall>false</clearall>
         <clearprogress>false</clearprogress>
         <profiles>
-            <amb>3995,3760,3758,3759</amb>
-            <crystal>71,77,73,75,72,76,74,78</crystal>
-            <dark>,78</dark>
-            <day>4082,4084,4083</day>
+            <amb>3760,3759,3995,3758</amb>
+            <crystal>71,73,75,77,72,74,76,78</crystal>
+            <dark />
+            <day>4084,4083,4082</day>
             <default />
-            <earth>74,</earth>
-            <fire>71,</fire>
-            <ice>,72</ice>
-            <light>,77</light>
-            <lightning>,75</lightning>
-            <month>3786,3788,3780,3783</month>
-            <res>946,950,951,948</res>
-            <trove>3773,3777,3768,3776,3771,3769,3772,3778,3770,3774,3775</trove>
-            <unity>3037,3018,3022,3021,3060,3045,3056,3020,3009,3038,3057,3692,3047,3059,3023,3019,3036,3672,3011,3060,3047,3692,3045</unity>
+            <earth>74</earth>
+            <fire>71</fire>
+            <ice />
+            <light />
+            <lightning />
+            <month>3780,3786,3788,3783</month>
+            <oct>3784,3781,3788,3787</oct>
+            <res>950,946,948,951</res>
+            <trove>3774,3775,3768,3776,3769,3777,3770,3778,3771,3772,3773</trove>
+            <unity>3018,3019,3020,3022,3057,3059,3036,3038,3009,3011,3697,3021,3023,3056,3060,3037,3692,3045,3047,3672</unity>
             <venemy>12</venemy>
-            <water>76,</water>
-            <wind>73,</wind>
+            <water>76</water>
+            <wind>73</wind>
         </profiles>
     </global>
 </settings>

@@ -23,6 +23,12 @@ return {
         ["ready_reaction"]="turnaround"
       }
   },
+  ["Odin"]={
+       ["Zantetsuken"]={
+         ["complete_reaction"]="",
+         ["ready_reaction"]="input /heal"
+       }
+   },
   ["Lady Lilith"]={
           ["Fatal Allure"]={
               ["complete_reaction"]="facemob",

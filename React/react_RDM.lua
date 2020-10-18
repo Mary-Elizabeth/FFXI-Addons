@@ -47,6 +47,12 @@ return {
             ["ready_reaction"]="exec other/keiaeromode.txt"
         }
     },
+    ["Odin"]={
+         ["Zantetsuken"]={
+           ["complete_reaction"]="",
+           ["ready_reaction"]="input /heal"
+         }
+     },
     ["Bozzetto Retributionist"]={
         ["Boiling Over"]={
             ["complete_reaction"]="",

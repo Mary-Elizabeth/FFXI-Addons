@@ -68,16 +68,22 @@ return {
           ["Dancing Fullers"]={
               ["complete_reaction"]="",
               ["ready_reaction"]="runaway 12"
-          },
-          ["Fire V"]={
-              ["complete_reaction"]="",
-              ["ready_reaction"]="exec other/keifiremode"
-          },
-          ["Aero V"]={
-              ["complete_reaction"]="",
-              ["ready_reaction"]="exec other/keiaeromode"
           }
       },
+      -- ["Kei"]={
+      --       ["Dancing Fullers"]={
+      --           ["complete_reaction"]="",
+      --           ["ready_reaction"]="runaway 12"
+      --       },
+      --       ["Fire V"]={
+      --           ["complete_reaction"]="",
+      --           ["ready_reaction"]="exec other/keifiremode"
+      --       },
+      --       ["Aero V"]={
+      --           ["complete_reaction"]="",
+      --           ["ready_reaction"]="exec other/keiaeromode"
+      --       }
+      --   },
       ["Ou"]={
             ["Dancing Fullers"]={
                 ["complete_reaction"]="",
@@ -91,7 +97,7 @@ return {
             },
             ["Paralyze"]={
               ["complete_reaction"]="",
-              ["ready_reaction"]="input /ws Stardiver <t>"
+              ["ready_reaction"]="input /ws Dimidiation <t>"
             },
             ["Cure VI"]={
                 ["complete_reaction"]="",
@@ -155,6 +161,10 @@ return {
             ["ready_reaction"]="turnaround"
         },
         ["Death Sentence"]={
+            ["complete_reaction"]="facemobp",
+            ["ready_reaction"]="turnaround"
+        },
+        ["Hellish Crescendo"]={
             ["complete_reaction"]="facemobp",
             ["ready_reaction"]="turnaround"
         },
@@ -223,12 +233,18 @@ return {
           ["ready_reaction"]="input /ma stun <t>"
       }
     },
-      ["Sinaa"]={
-           ["Mortal Blast"]={
-             ["complete_reaction"]="facemob",
-             ["ready_reaction"]="turnaround"
+      ["Odin"]={
+           ["Zantetsuken"]={
+             ["complete_reaction"]="",
+             ["ready_reaction"]="input /heal"
            }
        },
+       ["Sinaa"]={
+            ["Mortal Blast"]={
+              ["complete_reaction"]="facemob",
+              ["ready_reaction"]="turnaround"
+            }
+        },
        ["Lady Lilith"]={
                ["Fatal Allure"]={
                    ["complete_reaction"]="facemob",

@@ -71,10 +71,12 @@
         </text>
     </global>
     <enus>
+        <geo>Geo-Regen</geo>
+        <indi>Indi-Acumen</indi>
         <text>
             <pos>
-                <x>438</x>
-                <y>203</y>
+                <x>520</x>
+                <y>136</y>
             </pos>
         </text>
     </enus>
