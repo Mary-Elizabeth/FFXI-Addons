@@ -42,13 +42,8 @@
     </global>
     <carleigh>
         <pos>
-            <x>135</x>
+            <x>502</x>
             <y>858</y>
         </pos>
-        <text>
-            <fonts>
-
-            </fonts>
-        </text>
     </carleigh>
 </settings>
