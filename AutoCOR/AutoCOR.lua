@@ -1,7 +1,7 @@
 _addon.author = 'Ivaar'
 _addon.name = 'AutoCOR'
 _addon.commands = {'cor'}
-_addon.version = '1.18.01.29'
+_addon.version = '1.20.07.19'
 
 require('pack')
 require('lists')
@@ -11,10 +11,12 @@ texts = require('texts')
 config = require('config')
 
 default = {
-    roll = L{'Ninja Roll','Corsair\'s Roll'},
+    roll = L{'Fighter\'s Roll','Corsair\'s Roll'},
     active = true,
     crooked_cards = 1,
     text = {text = {size=10}},
+    autora = true,
+    aoe = {['p1'] = true,['p2'] = false,['p3'] = false,['p4'] = false,['p5'] = false},
     }
 
 settings = config.load(default)
@@ -39,7 +41,7 @@ rolls = T{
     [108] = {id=108,buff=320,en="Hunter's Roll",lucky=4,unlucky=8,bonus="Accuracy",job='Rng'},
     [109] = {id=109,buff=321,en="Samurai Roll",lucky=2,unlucky=6,bonus="Store TP",job='Sam'},
     [110] = {id=110,buff=322,en="Ninja Roll",lucky=4,unlucky=8,bonus="Evasion",job='Nin'},
-    [111] = {id=111,buff=323,en="Drachen Roll",lucky=3,unlucky=7,bonus="Pet Accuracy",job='Drg'},
+    [111] = {id=111,buff=323,en="Drachen Roll",lucky=4,unlucky=7,bonus="Pet Accuracy",job='Drg'},
     [112] = {id=112,buff=324,en="Evoker's Roll",lucky=5,unlucky=9,bonus="Refresh",job='smn'},
     [113] = {id=113,buff=325,en="Magus's Roll",lucky=2,unlucky=6,bonus="Magic Defense",job='Blu'},
     [114] = {id=114,buff=326,en="Corsair's Roll",lucky=5,unlucky=9,bonus="Experience Points",job='Cor'},
@@ -59,8 +61,57 @@ rolls = T{
     [391] = {id=391,buff=600,en="Runeist's Roll",lucky=4,unlucky=8,bonus="Magic Evasion",job='Run'},
     }
 
+local party_slots = L{'p1','p2','p3','p4','p5'}
+local roll_aoe = 8
+
+do
+    local equippable_bags = {'Inventory','Wardrobe','Wardrobe2','Wardrobe3','Wardrobe4'}
+
+    for _, bag in ipairs(equippable_bags) do
+        local items = windower.ffxi.get_items(bag)
+        if items.enabled then
+            for i,v in ipairs(items) do
+                if v.id == 15810 then
+                    roll_aoe = 16
+                end
+            end
+        end
+    end
+end
+
+local function is_valid_target(target, distance)
+    return target.hpp > 0 and target.distance:sqrt() < distance and (target.is_npc or not target.charmed)
+end
+
+function aoe_range()
+    for slot in party_slots:it() do
+        local member = windower.ffxi.get_mob_by_target(slot)
+
+        if member and settings.aoe[slot] and not is_valid_target(member, roll_aoe) then
+            return false
+        end
+    end
+    return true
+end
+
+function get_party_member_slot(name)
+    for slot in party_slots:it() do
+        local member = windower.ffxi.get_mob_by_target(slot)
+
+        if member and member.name:lower() == name then
+            return slot
+        end
+    end
+end
+
 local display_box = function()
-    return 'AutoCOR [O%s]\nRoll 1 [%s]\nRoll 2 [%s]':format(actions and 'n' or 'ff',settings.roll[1],settings.roll[2])
+    local str = '\n AoE:'
+    for slot in party_slots:it() do
+        local name = (windower.ffxi.get_mob_by_target(slot) or {name=''}).name
+
+        str = str..'\n <%s> [%s] %s':format(slot, settings.aoe[slot] and 'On' or 'Off', name)
+    end
+    return 'AutoCOR [O%s]\nRoll 1 [%s]\nRoll 2 [%s]':format(actions and 'n' or 'ff',settings.roll[1],settings.roll[2]) .. str
 end
 
 cor_status = texts.new(display_box(),settings.text,setting)
@@ -77,6 +128,7 @@ windower.register_event('outgoing chunk',function(id,data,modified,is_injected,i
 end)
 
 windower.register_event('prerender',function ()
+    cor_status:text(display_box())
     if not actions then return end
     local curtime = os.clock()
     if nexttime + del <= curtime then
@@ -85,7 +137,7 @@ windower.register_event('prerender',function ()
         local play = windower.ffxi.get_player()
         if not play or play.main_job ~= 'COR' or play.status > 1 then return end
         local abil_recasts = windower.ffxi.get_ability_recasts()
-        if buffs[16] or is_moving then return end
+        if buffs[16] or is_moving or not aoe_range() then return end
         if buffs[309] then
             if abil_recasts[198] and abil_recasts[198] == 0 then
                 use_JA('/ja "Fold" <me>')
@@ -104,7 +156,7 @@ windower.register_event('prerender',function ()
                 end
                 return
             elseif buffs[308] and buffs[308] == roll.id and buffs[roll.buff] ~= roll.lucky and buffs[roll.buff] ~= 11 then
-                if abil_recasts[197] and abil_recasts[197] == 0 and not buffs[357] and L{roll.unlucky,roll.lucky-1,10}:contains(buffs[roll.buff]) then
+                if abil_recasts[197] and abil_recasts[197] == 0 and not buffs[357] and L{roll.lucky-1,10,roll.unlucky > 6 and roll.unlucky}:contains(buffs[roll.buff]) then
                     use_JA('/ja "Snake Eye" <me>')
                 elseif abil_recasts[194] and abil_recasts[194] == 0 and (buffs[357] or buffs[roll.buff] < 7) then
                     use_JA('/ja "Double-Up" <me>')
@@ -149,15 +201,34 @@ windower.register_event('addon command', function(...)
                 end
             end
         end
+    elseif commands[1] == 'aoe' and commands[2] then
+        local slot = tonumber(commands[2], 6, 0) or commands[2]:match('[1-5]')
+        slot = slot and 'p' .. slot or get_party_member_slot(commands[2])
+
+        if not slot then
+            return
+        elseif not commands[3] then
+            settings.aoe[slot] = not settings.aoe[slot]
+        elseif commands[3] == 'on' then
+            settings.aoe[slot] = true
+        elseif commands[3] == 'off' then
+            settings.aoe[slot] = false
+        end
+
+        if settings.aoe[slot] then
+            windower.add_to_chat(207, 'Will now ensure <%s> is in AoE range.':format(slot))
+        else
+            windower.add_to_chat(207, 'Ignoring slot <%s>':format(slot))
+        end
     elseif commands[1] == 'save' then
         settings:save()
+        windower.add_to_chat(207, 'Settings saved.')
     elseif commands[1] == 'eval' then
         assert(loadstring(table.concat(commands, ' ',2)))()
     else
         -- create help text
     end
     cor_status:text(display_box())
-    --windower.add_to_chat(207, str)
 end)
 
 function use_JA(str)
@@ -213,18 +284,14 @@ function reset()
     actions = false
     is_casting = false
     buffs = {}
-	cor_status:text(display_box())
 end
 
 function status_change(new,old)
-  if new == 1 then --modified by Erik
-    actions = true --modified by Erik
-    cor_status:text(display_box()) --modified by Erik
-  elseif new > 1 and new < 4 then
+    --is_casting = false
+    if new > 1 and new < 4 then
         reset()
     end
 end
-
 
 windower.register_event('status change', status_change)
 windower.register_event('zone change','job change','logout', reset)

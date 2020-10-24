@@ -178,6 +178,8 @@ profiles['junk'] = S{
 	'Velkk Necklace',
 	'Iron Sand',
 	'Airlixir',
+	'Airlixir +1',
+	'Airlixir +2',
 	'Winterflower',
 	'Veydal Wrasse',
 	'Ryugu Titan',

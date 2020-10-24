@@ -8,19 +8,6 @@
             <red>0</red>
             <visible>true</visible>
         </bg>
-        <blacklist />
-        <colors>
-            <others>
-                <blue>0</blue>
-                <green>255</green>
-                <red>255</red>
-            </others>
-            <player>
-                <blue>255</blue>
-                <green>255</green>
-                <red>255</red>
-            </player>
-        </colors>
         <flags>
             <bold>false</bold>
             <bottom>false</bottom>
@@ -28,9 +15,7 @@
             <italic>false</italic>
             <right>false</right>
         </flags>
-        <hide_below_zero>false</hide_below_zero>
         <interval>0.1</interval>
-        <mode>blacklist</mode>
         <padding>0</padding>
         <pos>
             <x>0</x>
@@ -54,37 +39,17 @@
                 <width>0</width>
             </stroke>
         </text>
-        <timers>true</timers>
-        <whitelist />
     </global>
     <aerich>
         <pos>
-            <x>1346</x>
-            <y>48</y>
+            <x>1078</x>
+            <y>99</y>
         </pos>
     </aerich>
-    <aericht>
-        <pos>
-            <x>34</x>
-            <y>314</y>
-        </pos>
-    </aericht>
-    <carleigh>
-        <pos>
-            <x>1641</x>
-            <y>374</y>
-        </pos>
-    </carleigh>
     <enus>
         <pos>
-            <x>1217</x>
-            <y>60</y>
+            <x>753</x>
+            <y>31</y>
         </pos>
     </enus>
-    <skivvy>
-        <pos>
-            <x>871</x>
-            <y>46</y>
-        </pos>
-    </skivvy>
 </settings>

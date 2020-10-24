@@ -1,39 +1,39 @@
 --[[
 
     Commands:
-    
+
     [spell] is the spells name without the Indi-/Geo- prefix
-    
-    //geo indi [spell] 
+
+    //geo indi [spell]
         e.g "//geo indi precision"  "geo indi off"
-    
-    //geo geo [spell] 
+
+    //geo geo [spell]
         e.g "//geo geo precision"  "//geo geo off"
-     
-    //geo entrust player [spell] 
+
+    //geo entrust player [spell]
         "e.g //geo entrust kupipi refresh"  "//geo entrust off"
-        
+
     //geo refresh kupipi [on/off]   -- /ma refresh kupipi
 
     //geo haste tenzen [on/off]     -- /ma haste tenzen
-    
+
     //geo recast indi [min] [max]   -- Begin recasting indi between [min] and [max] seconds before they wear off.(randomized)
-    
+
     //geo recast buff [min] [max]   -- Same as the above for haste and refresh.
 
     //geo aug lifestream 20         -- set indi effect duration augment on lifestream cape
-    
+
     //geo active                    -- display active settings in text box
-    
+
     //geo save                      -- save settings on per character basis
-    
+
     //geo [on/off]                  -- turn actions on/off
-    
+
 --]]
 _addon.author = 'Ivaar'
-_addon.commands = {'AutoGEO','geo','ageo'}
+_addon.commands = {'AutoGEO','geo'}
 _addon.name = 'AutoGEO'
-_addon.version = '1.15.07.19'
+_addon.version = '1.2020.08.26'
 
 require('luau')
 texts = require('texts')
@@ -41,11 +41,10 @@ packets = require('packets')
 
 default = {
     delay = 4.2,
-    actions = false,
+    start_on_load = false,
     active = true,
     geo = 'Geo\-Precision',
     indi = 'Indi\-Precision',
-	blaze = false,
     entrust = {},
     min_ws_hp = 20,
     max_ws_hp = 99,
@@ -56,6 +55,7 @@ default = {
     }
 
 settings = config.load(default)
+actions = settings.start_on_load
 last_coords = 'fff':pack(0,0,0)
 is_moving = false
 nexttime = os.clock()
@@ -140,7 +140,7 @@ spell_ids = L{
 
 display_box = function()
     local str
-    if settings.actions then
+    if actions then
         str = ' AutoGEO [On] '
     else
         str = ' AutoGEO [Off] '
@@ -151,11 +151,6 @@ display_box = function()
         if settings.entrust.target then
             str = str..'\n Entrust: %s: \n  [%s] ':format(settings.entrust.target:ucfirst(),settings.entrust.ma)
         end
-		if settings.blaze then
-			str = str..'\n Blaze: On'
-		else
-			str = str..'\n Blaze: Off'
-		end
         for k,v in ipairs(settings.buffs.haste) do
            str = str..'\n Haste:[%s]':format(v:ucfirst())
         end
@@ -173,7 +168,7 @@ end
 geo_status = texts.new(display_box(),settings.text,settings)
 
 function prerender()
-    if not settings.actions then return end
+    if not actions then return end
     local curtime = os.clock()
     if nexttime + del <= curtime then
         nexttime = curtime
@@ -196,11 +191,7 @@ function prerender()
 
         local geo = settings.geo and geo_spells:with('en', settings.geo)
         if geo and not luopan and spell_recasts[geo.id] <= 0 and play.vitals.mp >= geo.mp_cost and (geo.targets == 5 or target and target.hpp > 0) then
-            if settings.blaze and abil_recasts[247] and abil_recasts[247] <= 0 then -- use blaze
-				use_JA('Blaze of Glory','<me>')
-			else
-				use_MA(geo.en, geo.targets == 5 and '<me>' or '<bt>')
-			end
+            use_MA(geo.en, geo.targets == 5 and '<me>' or '<bt>')
             return
         end
 
@@ -211,14 +202,15 @@ function prerender()
         end
 
         local entrust = settings.entrust.target and geo_spells:with('en', settings.entrust.ma)
-        if not JA_WS_lock and entrust and valid_target(settings.entrust.target,20) and abil_recasts[93] and spell_recasts[entrust.id] <= 0 and play.vitals.mp >= entrust.mp_cost and 
+        if not JA_WS_lock and entrust and valid_target(settings.entrust.target,20) and abil_recasts[93] and spell_recasts[entrust.id] <= 0 and play.vitals.mp >= entrust.mp_cost and
             (not timers.entrust[settings.entrust.target] or timers.entrust[settings.entrust.target].spell ~= entrust.en or os.time()-timers.entrust[settings.entrust.target].ts+recast>0) then
             if buffs.entrust then
                 use_MA(entrust.en,settings.entrust.target)
+                return
             elseif abil_recasts[93] <= 0 then
                 use_JA('Entrust','<me>')
+                return
             end
-            return
         end
 
         if settings.buffs.haste:length()+settings.buffs.refresh:length() ~= 0 then
@@ -247,7 +239,7 @@ end
 
 function valid_target(targ,dst)
     for ind,member in pairs(windower.ffxi.get_party()) do
-        if type(member) == 'table' and member.mob and member.mob.name:lower() == targ:lower() and math.sqrt(member.mob.distance) < dst and not member.mob.charmed and member.mob.hpp > 0 then
+        if type(member) == 'table' and member.mob and member.mob.name:lower() == targ:lower() and math.sqrt(member.mob.distance) < dst and (member.mob.is_npc or not member.mob.charmed) and member.mob.hpp > 0 then
            return true
         end
     end
@@ -266,15 +258,9 @@ function addon_command(...)
             if not user_events then
                 check_job()
             end
-            settings.actions = true
+            actions = true
         elseif commands[1] == 'off' then
-            settings.actions = false
-		elseif commands[1] == 'blaze' and commands[2] then
-			if commands[2] == 'on' then
-				settings.blaze = true
-			elseif commands[2] == 'off' then
-				settings.blaze = false
-			end
+            actions = false
         elseif commands[1] == 'entrust' and commands[2] then
             if commands[3] then
                 local spell = geo_spells:with('en','Indi\-'..commands[3]:ucfirst())
@@ -284,7 +270,7 @@ function addon_command(...)
                 else
                     addon_message('Invalid spell name.')
                 end
-            elseif commands[2] == 'off' then   
+            elseif commands[2] == 'off' then
                 settings.entrust = {}
                 addon_message('Entrust will not be used')
             end
@@ -312,8 +298,8 @@ function addon_command(...)
         elseif commands[1] == 'aug' and settings.aug[commands[2]] and commands[3] and tonumber(commands[3]) then
             settings.aug['lifestream'] = tonumber(commands[3])
             addon_message('Lifestream Cape = Indi eff. dur. +%s.':format(commands[3]))
-        elseif type(settings[commands[1]]) == 'string' and commands[2] then
-            if commands[2] == 'off' then   
+        elseif type(default[commands[1]]) == 'string' and commands[2] then
+            if commands[2] == 'off' then
                 settings[commands[1]] = nil
                 addon_message('%s will not be used':format(commands[1]))
             else
@@ -325,10 +311,10 @@ function addon_command(...)
                     addon_message('Invalid spell name.')
                 end
             end
-        elseif type(settings[commands[1]]) == 'number' and commands[2] and tonumber(commands[2]) then
+        elseif type(default[commands[1]]) == 'number' and commands[2] and tonumber(commands[2]) then
             settings[commands[1]] = tonumber(commands[2])
-            addon_message('%s is now set to %d':format(commands[1],settings[commands[1]]))  
-        elseif type(settings[commands[1]]) == 'boolean' then
+            addon_message('%s is now set to %d':format(commands[1],settings[commands[1]]))
+        elseif type(default[commands[1]]) == 'boolean' then
             if (not commands[2] and settings[commands[1]] == true) or (commands[2] and commands[2] == 'off') then
                 settings[commands[1]] = false
             elseif (not commands[2]) or (commands[2] and commands[2] == 'on') then
@@ -382,10 +368,10 @@ function check_incoming_chunk(id,original,modified,injected,blocked)
                 local spell = geo_spells[packet.Param]
                 local mult = 1
                 local dur = 180 + windower.ffxi.get_player().job_points.geo.indocolure_spell_effect_dur * 2
-                if get_equip('legs') == 'Bagua Pants +1' then dur = dur + 20 end
-                if get_equip('legs') == 'Bagua Pants' then dur = dur + 12 end
-                if get_equip('legs') == 'Azimuth Gaiters' then dur = dur + 15 end
-                if get_equip('legs') == 'Azimuth Gaiters +1' then dur = dur + 20 end
+                if get_equip('legs') == 'Bagua Pants +1' then dur = dur + 20
+                elseif get_equip('legs') == 'Bagua Pants' then dur = dur + 12 end
+                if get_equip('feet') == 'Azimuth Gaiters' then dur = dur + 15
+                elseif get_equip('legs') == 'Azimuth Gaiters +1' then dur = dur + 20 end
                 if get_equip('back') == 'Lifestream Cape' then mult = mult + settings.aug.lifestream * 0.01 end
                 dur = math.floor(mult*dur)
                 if packet.Actor == packet['Target 1 ID'] then
@@ -397,7 +383,7 @@ function check_incoming_chunk(id,original,modified,injected,blocked)
             elseif spell_ids[packet.Param] then
                 local spell = spell_ids[packet.Param]
                 local target = windower.ffxi.get_mob_by_id(packet['Target 1 ID'])
-                timers[spell.enl:lower()][target.name:lower()] = os.time()+spell.dur 
+                timers[spell.enl:lower()][target.name:lower()] = os.time()+spell.dur
             end
         elseif L{3,5,11}:contains(packet.Category) then -- 2 Ranged Attacks
             -- Finish Casting/WS/Item Use
@@ -423,7 +409,7 @@ function check_outgoing_chunk(id,data,modified,is_injected,is_blocked)
 end
 
 function reset()
-    settings.actions = false
+    actions = false
     is_casting = false
     timers = {entrust={},haste={},refresh={}}
     geo_status:text(display_box())

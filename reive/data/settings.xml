@@ -67,7 +67,7 @@
         <max_scores>5</max_scores>
         <position>
             <x>100</x>
-            <y>100</y>
+            <y>500</y>
         </position>
         <reset_on_start>false</reset_on_start>
         <track>

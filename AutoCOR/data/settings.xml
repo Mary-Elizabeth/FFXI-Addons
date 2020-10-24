@@ -3,7 +3,7 @@
     <global>
         <active>true</active>
         <crooked_cards>1</crooked_cards>
-        <roll>Samurai Roll,Chaos Roll</roll>
+        <roll>Samurai Roll,Fighter's Roll</roll>
         <text>
             <bg>
                 <alpha>255</alpha>
@@ -33,7 +33,7 @@
                 </fonts>
                 <green>255</green>
                 <red>255</red>
-                <size>10</size>
+                <size>9</size>
                 <stroke>
                     <alpha>255</alpha>
                     <blue>0</blue>
@@ -45,11 +45,11 @@
         </text>
     </global>
     <skivvy>
-        <roll>Chaos Roll,Samurai Roll</roll>
+        <roll>Fighter's Roll,Samurai Roll</roll>
         <text>
             <pos>
-                <x>1230</x>
-                <y>750</y>
+                <x>1250</x>
+                <y>940</y>
             </pos>
         </text>
     </skivvy>

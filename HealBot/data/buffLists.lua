@@ -85,6 +85,9 @@ return {
             'Reraise IV',
             'Afflatus Solace',
         },
+        ['melee'] = {
+            'Haste',
+        },
         ['self'] = {
             'Haste',
             'Aquaveil',
