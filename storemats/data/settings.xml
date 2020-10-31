@@ -1,7 +1,7 @@
 <?xml version="1.1" ?>
 <settings>
     <global>
-        <always_bring_to_inventory>Echo Drops,Sole Sushi</always_bring_to_inventory>
+        <always_bring_to_inventory>Sacred Kindred's Crest,Echo Drops,Sole Sushi</always_bring_to_inventory>
         <keep_in_inventory>Silver Voucher,Copper Voucher</keep_in_inventory>
         <keep_single_stack_only>Remedy,Silent Oil,Prism Powder</keep_single_stack_only>
         <small_footprint>true</small_footprint>

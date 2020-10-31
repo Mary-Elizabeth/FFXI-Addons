@@ -30,6 +30,7 @@
                 <min>20</min>
             </indi>
         </recast>
+        <start_on_load>false</start_on_load>
         <text>
             <bg>
                 <alpha>255</alpha>

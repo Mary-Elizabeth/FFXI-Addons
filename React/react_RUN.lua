@@ -54,6 +54,17 @@ return {
             ["ready_reaction"]="input /p Thar She Blows! <call2>"
         }
     },
+    ["Bozzetto Bruiser"]={
+        ["Hundred Fists"]={
+            ["complete_reaction"]="",
+            ["ready_reaction"]="input /ja Battuta <me>"
+        },
+        ["Head Snatch"]={
+            ["complete_reaction"]="",
+            ["ready_reaction"]="input /ma Flash <t>"
+        }
+    },
+
     ["Bozzetto Regent"]={
         ["Croctastrophe"]={
             ["complete_reaction"]="",

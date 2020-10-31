@@ -9,7 +9,9 @@
         <commamode>false</commamode>
         <condensecrits>false</condensecrits>
         <condensedamage>true</condensedamage>
+        <condensetargetname>false</condensetargetname>
         <condensetargets>true</condensetargets>
+        <crafting>true</crafting>
         <line_aoe>AOE ${numb} ¨ ${target}</line_aoe>
         <line_aoebuff>${actor} ${abil} ¨ ${target} (${status})</line_aoebuff>
         <line_full>[${actor}] ${numb} ${abil} ¨ ${target}</line_full>
@@ -22,6 +24,7 @@
         <line_roll>${actor} ${abil} ¨ ${target} ª ${number}</line_roll>
         <line_steal>[${actor}] ${abil} ¨ ${target} (${item})</line_steal>
         <oxford>true</oxford>
+        <showownernames>false</showownernames>
         <simplify>true</simplify>
         <sumdamage>true</sumdamage>
         <swingnumber>true</swingnumber>

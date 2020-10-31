@@ -82,6 +82,13 @@
                 <y>175</y>
             </pos>
         </box>
+        <recast>
+            <song>
+                <max>15</max>
+                <min>10</min>
+            </song>
+        </recast>
+        <timers>true</timers>
     </enus>
     <rythor>
         <actions>true</actions>

@@ -1725,7 +1725,7 @@ windower.register_event('zone change', function(new,old)--mary
 		for k, v in pairs(windower.ffxi.get_party()) do --loop through all party members
 				if type(v) == 'table' then
 					if v.name ~= currentPC.name then --if party member is not current player
-						local exclusions = S{298,297,296,295,294,293,292,291,290,289,288,287,284,281,280,279,275,271,259,255,228,227,226,225,224,223,221,220,39,40,41,42,135,136,185,186,187,188,215,216,217,218,255,253,254,264}--279 walk of echos P2
+						local exclusions = S{298,297,296,295,294,293,292,291,290,289,288,287,284,281,280,279,275,271,259,255,249,228,227,226,225,224,223,221,220,39,40,41,42,135,136,185,186,187,188,215,216,217,218,255,253,254,264}--279 walk of echos P2
 						if v.zone == old and not exclusions:contains(new) then --279 walk of echos P2
 							windower.send_command('send ' .. v.name .. ' setkey numpad8 down')
 							coroutine.sleep(1.5)

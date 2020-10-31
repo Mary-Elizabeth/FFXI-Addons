@@ -5,47 +5,47 @@
         <y>0</y>
     </global>
     <enus>
-        <x>0</x>
-        <y>1068</y>
+		<x>1920</x>
+        <y>-1080</y>
     </enus>
     <aerich>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aerich>
     <aericht>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aericht>
     <aerichb>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aerichb>
     <aerichs>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aerichs>
     <aerichj>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aerichj>
     <aerichw>
-        <x>-1914</x>
-        <y>850</y>
+	     <x>1920</x>
+        <y>0</y>
     </aerichw>
     <haleigh>
-        <x>1914</x>
-        <y>1068</y>
+       <x>3842</x>
+        <y>0</y>
     </haleigh>
     <carleigh>
-        <x>1914</x>
-        <y>1068</y>
+       <x>3842</x>
+        <y>0</y>
     </carleigh>
     <kaleigh>
-        <x>1914</x>
-        <y>1068</y>
+       <x>3842</x>
+        <y>0</y>
     </kaleigh>
     <skivvy>
-        <x>1914</x>
-        <y>0</y>
+        <x>3842</x>
+        <y>-1080</y>
     </skivvy>
 </settings>
