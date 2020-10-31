@@ -9,14 +9,15 @@ packets = require('packets')
 texts = require('texts')
 
 spy = true
-setting = 'all'--'odyssey'
+setting = 'all'
 report = false
 found = T{}
 found_index = 1
 best_match = nil
 
 SpiedMobs = {
-	odyssey = S{'Runic Lamp','Chest','Coffer','Aurum Strongbox'},
+	all = S{'Chest','Coffer','Aurum Strongbox','Runic Lamp'},
+	odyssey = S{'Chest','Coffer','Aurum Strongbox'},
 	nyzul = S{'Runic Lamp'},
 	questions = S{'???'},
 	}

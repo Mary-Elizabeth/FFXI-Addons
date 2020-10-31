@@ -52,4 +52,16 @@
             <y>31</y>
         </pos>
     </enus>
+    <carleigh>
+        <pos>
+            <x>8</x>
+            <y>150</y>
+        </pos>
+    </carleigh>
+    <skivvy>
+        <pos>
+            <x>9</x>
+            <y>154</y>
+        </pos>
+    </skivvy>
 </settings>
